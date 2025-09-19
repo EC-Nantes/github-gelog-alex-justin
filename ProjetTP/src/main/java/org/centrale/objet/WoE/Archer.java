@@ -25,6 +25,10 @@ public class Archer extends Personnage{
         this.nbFleches = nbFleches;
     }
     
+    public Archer(){
+        super();
+        this.nbFleches = 0;
+    }
     
     
 }
