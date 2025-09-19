@@ -120,6 +120,6 @@ public class Personnage {
     }
     
     public void affiche(){
-        System.out.println("Nom :" +nom + "/ Pt Vie" + ptVie);
+        System.out.println("Nom :" +nom + "/ Pt Vie :" + ptVie + "/ position :" + pos);
     }
 }
