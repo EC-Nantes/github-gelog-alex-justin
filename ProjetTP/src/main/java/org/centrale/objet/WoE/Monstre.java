@@ -48,7 +48,9 @@ public class Monstre {
     }
     
     public void affiche() {
-	System.out.println("Pt Vie :" + ptVie + "/ position :" + pos);
+	System.out.println("Pt Vie :" + ptVie + "/ position :" );
+        pos.affiche();
+        System.out.println("");
     }
     
     public int getPtVie() {
