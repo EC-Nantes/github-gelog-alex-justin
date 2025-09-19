@@ -6,7 +6,8 @@ package org.centrale.objet.woe.projettp;
 
 /**
  *
- * @author Catherine
+ * @author Alexandre
+ * @version 1.0
  */
 public class Monstre {
     private int ptVie;
@@ -22,7 +23,7 @@ public class Monstre {
 	ptPar = pPar;
 	pageAtt = paAtt;
 	pagePar = paPar;
-	pos = new Point2D(pos);
+	this.pos = new Point2D(pos);
     }
     
     public Monstre(Monstre m) {
