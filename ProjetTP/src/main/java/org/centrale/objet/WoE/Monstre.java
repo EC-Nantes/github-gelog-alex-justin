@@ -48,7 +48,7 @@ public class Monstre {
     }
     
     public void affiche() {
-	System.out.println("pas encore intégrée");
+	System.out.println("Pt Vie :" + ptVie + "/ position :" + pos);
     }
     
     public int getPtVie() {
