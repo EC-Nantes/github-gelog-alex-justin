@@ -29,6 +29,16 @@ public class Archer extends Personnage{
         super();
         this.nbFleches = 0;
     }
+
+    public Archer(String n, int pV, int dA, int pPar, int paAtt, int paPar, int dMax, Point2D p) {
+        super(n, pV, dA, pPar, paAtt, paPar, dMax, p);
+    }
+
+    public Archer(Personnage perso) {
+        super(perso);
+    }
+    
+    
     
     
 }
