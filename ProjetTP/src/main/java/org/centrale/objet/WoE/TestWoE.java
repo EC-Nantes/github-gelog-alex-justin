@@ -28,6 +28,10 @@ public class TestWoE {
         Centrale.peons.affiche();
         Centrale.bugs0.affiche();
         Centrale.bugs1.affiche();
+        
+        Point2D pou1 = new Point2D();
+        Bulbi Bulbizart = new Bulbi(24, "Bulbizarre", 100, 40, 30, 20, 20, 5, pou1);
+        Bulbizart.affiche();
     }
     
 }
