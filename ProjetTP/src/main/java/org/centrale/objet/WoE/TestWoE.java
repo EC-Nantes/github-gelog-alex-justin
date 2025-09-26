@@ -5,7 +5,7 @@
 package org.centrale.objet.WoE;
 
 /**
- *
+ * Classe de tests des différentes classes
  * @author jujus
  */
 public class TestWoE {
