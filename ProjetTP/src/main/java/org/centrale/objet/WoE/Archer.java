@@ -23,10 +23,12 @@ public class Archer extends Personnage{
 
     public Archer(int nbFleches) {
         this.nbFleches = nbFleches;
+        setNom("Robin");
     }
     
     public Archer(){
         super();
+        setNom("Robin");
         this.nbFleches = 0;
     }
 
