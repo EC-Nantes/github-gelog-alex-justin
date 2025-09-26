@@ -19,6 +19,15 @@ public class Monstre {
     private int pagePar;
     private Point2D pos;
     
+    /**
+     * Constructeur de la classe Monstre
+     * @param pV Nombre de points de vie du personnage
+     * @param dA Nombre de dégâts que le personnage inflige en cas d'attaque réussie
+     * @param pPar Nombre de dégâts que le personnage peut parer en cas de parade réussie
+     * @param paAtt Pourcentage de chance de réussite d'une attaque (entre 0 et 100)
+     * @param paPar Pourcentage de chance de réussite d'une parade (entre 0 et 100)
+     * @param pos position du Monstre
+     */
     public Monstre(int pV, int dA, int pPar, int paAtt, int paPar, Point2D pos) {
 	ptVie = pV;
 	degAtt = dA;
@@ -28,6 +37,10 @@ public class Monstre {
 	this.pos = new Point2D(pos);
     }
     
+    /**
+     * Constructeur de copie de la classe monstre
+     * @param m 
+     */
     public Monstre(Monstre m) {
 	ptVie = m.ptVie;
 	degAtt = m.degAtt;
@@ -36,6 +49,9 @@ public class Monstre {
 	pagePar = m.pagePar;
     }
     
+    /**
+     * Constructeur par défaut de la classe monstre
+     */
     public Monstre() {
 	ptVie = 100;
 	degAtt = 10;
@@ -45,6 +61,10 @@ public class Monstre {
 	pos = new Point2D(0, 0);
     }
     
+    /**
+     * Méthode de déplacement de la classe Monstre
+     * Déplacement aléatoire sur une des cases adjacente au monstre (équiprobable)
+     */
     public void deplace() {
 	Random rand = new Random();
 	
@@ -58,6 +78,9 @@ public class Monstre {
 	pos.translate(dx, dy);
     }
     
+    /**
+     * Méthode affichage des informations importantes du monstre : Points de vie et position
+     */
     public void affiche() {
 	System.out.print("Pt Vie :" + ptVie + "/ position :" );
         pos.affiche();
