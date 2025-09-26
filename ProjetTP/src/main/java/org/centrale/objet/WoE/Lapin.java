@@ -5,7 +5,9 @@
 package org.centrale.objet.WoE;
 
 /**
- *
+ * Classe représentant un Lapin dans le jeu WoE
+ * Les lapins vont vite, sont inoffensifs (sauf on ajoutera peut être des killers bunny)
+ * 
  * @author Alexandre
  * @version 1.0
  */

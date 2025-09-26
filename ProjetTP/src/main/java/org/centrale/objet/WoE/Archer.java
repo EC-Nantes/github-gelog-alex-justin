@@ -5,7 +5,8 @@
 package org.centrale.objet.WoE;
 
 /**
- *
+ * Classe représentant un Archer dans le jeu World of ECN.
+ * Hérite de la classe Personnage et ajoute des caractéristiques spécifiques liées aux attaques à distance.
  * @author jujus
  */
 public class Archer extends Personnage{

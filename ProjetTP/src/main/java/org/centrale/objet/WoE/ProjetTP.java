@@ -5,7 +5,7 @@
 package org.centrale.objet.WoE;
 
 /**
- *
+ * Main
  * @author jujus
  */
 public class ProjetTP {

@@ -5,7 +5,7 @@
 package org.centrale.objet.WoE;
 import java.lang.Math;
 /**
- *
+ * Définition des positions
  * @author Alexandre
  * @versionJustin1.1
  */

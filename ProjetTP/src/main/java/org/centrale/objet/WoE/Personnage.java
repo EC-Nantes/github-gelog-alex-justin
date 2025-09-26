@@ -7,6 +7,8 @@ package org.centrale.objet.WoE;
 import java.util.Random;
 
 /**
+ * La classe principale de Woe
+ * Ils affrontent des monstres
  *
  * @author jujus
  */

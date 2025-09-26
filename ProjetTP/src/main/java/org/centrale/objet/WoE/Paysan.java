@@ -5,7 +5,9 @@
 package org.centrale.objet.WoE;
 
 /**
- *
+ * Classe représentants des paysans
+ * Des personnages par défauts, faibles, ils ne sont pas spécialisés pour le combat
+ * 
  * @author jujus
  */
 public class Paysan extends Personnage {

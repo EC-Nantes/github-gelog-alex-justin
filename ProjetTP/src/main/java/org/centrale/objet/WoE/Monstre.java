@@ -7,7 +7,9 @@ package org.centrale.objet.WoE;
 import java.util.Random;
 
 /**
- *
+ * Classe des monstres de WoE
+ * Opposants des personnages
+ * 
  * @author Alexandre
  * @version 1.0
  */

@@ -5,7 +5,7 @@
 package org.centrale.objet.WoE;
 
 /**
- *
+ * Les tests des points
  * @author Alexandre
  * @versionJustin1.1
  */

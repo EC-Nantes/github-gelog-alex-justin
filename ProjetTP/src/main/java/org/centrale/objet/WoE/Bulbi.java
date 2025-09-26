@@ -5,7 +5,9 @@
 package org.centrale.objet.WoE;
 
 /**
- *
+ * Classe représentant un Bulbizarre (du jeu pokémon) dans le jeu WorldofECn, référence à notre liste BDAù
+ * Classe spécifique, liée au attaque à moyenne distance, ne frappe pas fort mais ne peut pas rater
+ * 
  * @author jujus
  * 
  * L'objectif c'est que les bulbis soient une espèce de mage avec une attaque fouet liane qui peut évoluer pour devenir une tempete verte.
