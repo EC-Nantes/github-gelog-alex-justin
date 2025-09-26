@@ -21,6 +21,13 @@ public class TestWoE {
         }
         Justin.affiche();
         Alexandre.affiche();
+        
+        World Centrale = new World();
+        Centrale.creerMondeAlea();
+        Centrale.robin.affiche();
+        Centrale.peons.affiche();
+        Centrale.bugs0.affiche();
+        Centrale.bugs1.affiche();
     }
     
 }
