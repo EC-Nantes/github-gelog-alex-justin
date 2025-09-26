@@ -23,6 +23,10 @@ public class World {
      */
     public Archer GuillaumeT ;
     /**
+     * Instance d'un guerrier s'appelant grosBill
+     */
+    public Guerrier grosBill;
+    /**
      * Instance d'un paysan peon
      */
     public Paysan peon;
@@ -34,6 +38,12 @@ public class World {
      * Instance de lapin
      */
     public Lapin bugs1;
+    /**
+     * Instance d'un loup s'appelant wolfie
+     */
+    public Loup wolfie;
+    
+    
     
     /**
      * Limite du plateau selon x
@@ -52,8 +62,10 @@ public class World {
     public World() {
 	robin = new Archer();
 	peon = new Paysan();
+	grosBill = new Guerrier();
 	bugs0 = new Lapin();
 	bugs1 = new Lapin();
+	wolfie = new Loup();
     }
     
     /**
@@ -68,7 +80,7 @@ public class World {
 	// Création d'une liste vide de Point2D
         List<Point2D> points = new ArrayList<>();
 
-        while (points.size() < 4) {
+        while (points.size() < 6) {
             int x = rand.nextInt(x_max);
             int y = rand.nextInt(y_max);
             
@@ -84,6 +96,8 @@ public class World {
         peon.setPos(points.get(1));
         bugs0.setPos(points.get(2));
         bugs1.setPos(points.get(3));
+	wolfie.setPos(points.get(4));
+	grosBill.setPos(points.get(5));
     }
     
     /**
@@ -92,8 +106,17 @@ public class World {
     public void tourDeJeu() {
 	robin.deplace();
 	peon.deplace();
+	grosBill.deplace();
 	bugs0.deplace();
 	bugs1.deplace();
+	wolfie.deplace();
 	
+    }
+    
+    /**
+     * 
+     */
+    public void aficheWorld() {
+	//
     }
 }
