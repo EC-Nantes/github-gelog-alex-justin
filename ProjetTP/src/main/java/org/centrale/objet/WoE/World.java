@@ -37,13 +37,13 @@ public class World {
 	// Création d'une liste vide de Point2D
         List<Point2D> points = new ArrayList<>();
 
-         while (points.size() < 4) {
+        while (points.size() < 4) {
             int x = rand.nextInt(x_max);
             int y = rand.nextInt(y_max);
             
             Point2D p = new Point2D(x,y);
 
-            if (points.contains(p)){
+            if (!points.contains(p)){
                 points.add(p);
             }
         }
