@@ -14,14 +14,37 @@ import java.util.List;
  * @version 1.1
  */
 public class World {
+    /**
+     * Instance d'un archer s'appelant Robin
+     */
     public Archer robin;
+    /**
+     * Instance d'un paysan peon
+     */
     public Paysan peon;
+    /**
+     * Instance de lapin
+     */
     public Lapin bugs0;
+    /**
+     * Instance de lapin
+     */
     public Lapin bugs1;
     
+    /**
+     * Limite du plateau selon x
+     * Cela sera à changer en fonction des nouvelles contraintes
+     */
     private int x_max = 100;
+    /**
+     * Limite du plateau selon y
+     * Cela sera à changer en fonction des nouvelles contraintes
+     */
     private int y_max = 100;
     
+    /**
+     * Constructeur du monde pour créer les instances de classe
+     */
     public World() {
 	robin = new Archer();
 	peon = new Paysan();
@@ -29,6 +52,10 @@ public class World {
 	bugs1 = new Lapin();
     }
     
+    /**
+     * Place les entités dans le monde de façon aléatoire
+     * Cette fonction ne doit être appelé qu'une seule fois pour l'initialisation
+     */
     public void creerMondeAlea() {
 	Random rand = new Random();
 	
@@ -53,6 +80,9 @@ public class World {
         bugs1.setPos(points.get(3));
     }
     
+    /**
+     * Itère le déplacement des entités
+     */
     public void tourDeJeu() {
 	robin.deplace();
 	peon.deplace();
