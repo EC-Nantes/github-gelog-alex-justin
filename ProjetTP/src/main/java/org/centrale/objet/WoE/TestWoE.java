@@ -46,7 +46,7 @@ public class TestWoE {
 	
         
         Point2D pou1 = new Point2D();
-        Bulbi Bulbizart = new Bulbi(24, "Bulbizarre", 100, 40, 30, 20, 20, 5, pou1);
+        Bulbi Bulbizart = new Bulbi(24, 100, 40, 30, 20, 20, pou1);
         Bulbizart.affiche();
     }
     
