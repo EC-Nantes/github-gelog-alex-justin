@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class World {
     public Archer robin;
-    public Paysan peons;
+    public Paysan peon;
     public Lapin bugs0;
     public Lapin bugs1;
     
@@ -24,7 +24,7 @@ public class World {
     
     public World() {
 	robin = new Archer();
-	peons = new Paysan();
+	peon = new Paysan();
 	bugs0 = new Lapin();
 	bugs1 = new Lapin();
     }
@@ -48,8 +48,16 @@ public class World {
             }
         }
         robin.setPos(points.get(0));
-        peons.setPos(points.get(1));
+        peon.setPos(points.get(1));
         bugs0.setPos(points.get(2));
         bugs1.setPos(points.get(3));
+    }
+    
+    public void tourDeJeu() {
+	robin.deplace();
+	peon.deplace();
+	bugs0.deplace();
+	bugs1.deplace();
+	
     }
 }

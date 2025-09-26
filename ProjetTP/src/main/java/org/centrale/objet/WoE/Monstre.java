@@ -4,6 +4,8 @@
  */
 package org.centrale.objet.WoE;
 
+import java.util.Random;
+
 /**
  *
  * @author Alexandre
@@ -44,11 +46,20 @@ public class Monstre {
     }
     
     public void deplace() {
-	pos.translate(1, 1);
+	Random rand = new Random();
+	
+	// Pour avoir un vecteur dont les valeurs sont entre -1 et 1
+	int dx = 0;
+	int dy = 0;
+	while (dx == 0 && dy == 0) {
+	    dx = rand.nextInt(3) - 1;
+	    dy = rand.nextInt(3) - 1;
+	}
+	pos.translate(dx, dy);
     }
     
     public void affiche() {
-	System.out.println("Pt Vie :" + ptVie + "/ position :" );
+	System.out.print("Pt Vie :" + ptVie + "/ position :" );
         pos.affiche();
         System.out.println("");
     }

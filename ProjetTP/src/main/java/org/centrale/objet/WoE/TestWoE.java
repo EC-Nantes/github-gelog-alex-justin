@@ -25,9 +25,17 @@ public class TestWoE {
         World Centrale = new World();
         Centrale.creerMondeAlea();
         Centrale.robin.affiche();
-        Centrale.peons.affiche();
+        Centrale.peon.affiche();
         Centrale.bugs0.affiche();
         Centrale.bugs1.affiche();
+	
+	System.out.println("\nTour de jeu pour tester la fonction deplace()");
+	Centrale.tourDeJeu();
+	Centrale.robin.affiche();
+        Centrale.peon.affiche();
+        Centrale.bugs0.affiche();
+        Centrale.bugs1.affiche();
+	
         
         Point2D pou1 = new Point2D();
         Bulbi Bulbizart = new Bulbi(24, "Bulbizarre", 100, 40, 30, 20, 20, 5, pou1);
