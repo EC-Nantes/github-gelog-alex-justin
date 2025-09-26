@@ -89,7 +89,5 @@ public class World {
 	bugs0.deplace();
 	bugs1.deplace();
 	
-	
-	
     }
 }
