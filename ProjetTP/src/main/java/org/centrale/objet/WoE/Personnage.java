@@ -73,66 +73,130 @@ public class Personnage {
         this.pos = new Point2D();
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPtVie() {
         return ptVie;
     }
 
+    /**
+     *
+     * @param ptVie
+     */
     public void setPtVie(int ptVie) {
         this.ptVie = ptVie;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getDegAtt() {
         return degAtt;
     }
 
+    /**
+     *
+     * @param degAtt
+     */
     public void setDegAtt(int degAtt) {
         this.degAtt = degAtt;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPtPar() {
         return ptPar;
     }
 
+    /**
+     *
+     * @param ptPar
+     */
     public void setPtPar(int ptPar) {
         this.ptPar = ptPar;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPageAtt() {
         return pageAtt;
     }
 
+    /**
+     *
+     * @param pageAtt
+     */
     public void setPageAtt(int pageAtt) {
         this.pageAtt = pageAtt;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPagePar() {
         return pagePar;
     }
 
+    /**
+     *
+     * @param pagePar
+     */
     public void setPagePar(int pagePar) {
         this.pagePar = pagePar;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getDistAttMax() {
         return distAttMax;
     }
 
+    /**
+     *
+     * @param distAttMax
+     */
     public void setDistAttMax(int distAttMax) {
         this.distAttMax = distAttMax;
     }
 
+    /**
+     *
+     * @return
+     */
     public Point2D getPos() {
         return pos;
     }
 
+    /**
+     *
+     * @param pos
+     */
     public void setPos(Point2D pos) {
         this.pos = pos;
     }

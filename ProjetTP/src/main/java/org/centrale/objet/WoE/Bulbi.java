@@ -16,29 +16,68 @@ package org.centrale.objet.WoE;
 public class Bulbi extends Personnage {
     private int PP;
 
+    /**
+     *
+     * @param PP
+     * @param n
+     * @param pV
+     * @param dA
+     * @param pPar
+     * @param paAtt
+     * @param paPar
+     * @param dMax
+     * @param p
+     */
     public Bulbi(int PP, String n, int pV, int dA, int pPar, int paAtt, int paPar, int dMax, Point2D p) {
         super(n, pV, dA, pPar, paAtt, paPar, dMax, p);
         this.PP = PP;
     }
 
+    /**
+     *
+     * @param PP
+     * @param perso
+     */
     public Bulbi(int PP, Personnage perso) {
         super(perso);
         this.PP = PP;
     }
 
+    /**
+     *
+     * @param PP
+     */
     public Bulbi(int PP) {
         this.PP = PP;
         setNom("Bulbizart");
     }
 
+    /**
+     *
+     * @param n
+     * @param pV
+     * @param dA
+     * @param pPar
+     * @param paAtt
+     * @param paPar
+     * @param dMax
+     * @param p
+     */
     public Bulbi(String n, int pV, int dA, int pPar, int paAtt, int paPar, int dMax, Point2D p) {
         super(n, pV, dA, pPar, paAtt, paPar, dMax, p);
     }
 
+    /**
+     *
+     * @param perso
+     */
     public Bulbi(Personnage perso) {
         super(perso);
     }
 
+    /**
+     *
+     */
     public Bulbi() {
         setNom("Bulbizart");
     }

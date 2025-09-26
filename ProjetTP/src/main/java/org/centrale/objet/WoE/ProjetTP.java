@@ -10,6 +10,10 @@ package org.centrale.objet.WoE;
  */
 public class ProjetTP {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         TestWoE Test = new TestWoE();
         Test.main();

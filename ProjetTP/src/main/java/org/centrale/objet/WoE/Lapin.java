@@ -12,14 +12,31 @@ package org.centrale.objet.WoE;
  * @version 1.0
  */
 public class Lapin extends Monstre {
+
+    /**
+     *
+     * @param pV
+     * @param dA
+     * @param pPar
+     * @param paAtt
+     * @param paPar
+     * @param pos
+     */
     public Lapin(int pV, int dA, int pPar, int paAtt, int paPar, Point2D pos) {
 	super(pV, dA, pPar, paAtt, paPar, pos);
     }
     
+    /**
+     *
+     * @param l
+     */
     public Lapin(Lapin l) {
 	super(l);
     }
     
+    /**
+     *
+     */
     public Lapin() {
 	super();
     }

@@ -9,6 +9,10 @@ package org.centrale.objet.WoE;
  * @author jujus
  */
 public class TestWoE {
+
+    /**
+     *
+     */
     public static void main(){
         Lapin Alexandre = new Lapin();
         Point2D p = new Point2D();

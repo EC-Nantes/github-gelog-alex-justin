@@ -89,50 +89,98 @@ public class Monstre {
         System.out.println("");
     }
     
+    /**
+     *
+     * @return
+     */
     public int getPtVie() {
 	return ptVie;
     }
     
+    /**
+     *
+     * @param pV
+     */
     public void setPtVie(int pV) {
 	ptVie = pV;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getDegAtt() {
 	return degAtt;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPtPar() {
 	return ptPar;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPageAtt() {
 	return pageAtt;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPagePar() {
 	return pagePar;
     }
 
+    /**
+     *
+     * @return
+     */
     public Point2D getPos() {
 	return pos;
     }
 
+    /**
+     *
+     * @param degAtt
+     */
     public void setDegAtt(int degAtt) {
 	this.degAtt = degAtt;
     }
 
+    /**
+     *
+     * @param ptPar
+     */
     public void setPtPar(int ptPar) {
 	this.ptPar = ptPar;
     }
 
+    /**
+     *
+     * @param pageAtt
+     */
     public void setPageAtt(int pageAtt) {
 	this.pageAtt = pageAtt;
     }
 
+    /**
+     *
+     * @param pagePar
+     */
     public void setPagePar(int pagePar) {
 	this.pagePar = pagePar;
     }
 
+    /**
+     *
+     * @param pos
+     */
     public void setPos(Point2D pos) {
 	this.pos = pos;
     }

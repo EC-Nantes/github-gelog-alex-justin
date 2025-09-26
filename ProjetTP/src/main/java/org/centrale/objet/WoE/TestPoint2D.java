@@ -10,10 +10,17 @@ package org.centrale.objet.WoE;
  * @version 1.1
  */
 public class TestPoint2D {
+
+    /**
+     *
+     */
     public TestPoint2D() {
         //
     }
     
+    /**
+     *
+     */
     public void main() {
         Point2D p1 = new Point2D();
         Point2D p2 = new Point2D(5, 9);
