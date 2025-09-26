@@ -19,5 +19,6 @@ public class Paysan extends Personnage {
     }
 
     public Paysan() {
+        setNom("Peons");
     }
 }
