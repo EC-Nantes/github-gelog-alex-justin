@@ -21,11 +21,12 @@ public class PotionSoin extends Objet {
     
     /**
      * Constructeur pour fixer le nombre de point de régénération
-     * @param ptV 
+     * @param ptV Points de vie régénérés par la potion
+     * @param nom Le nom de la potion
      */
-    public PotionSoin(int ptV) {
+    public PotionSoin(String nom, int ptV) {
 	ptRegen = ptV;
-	super.setNom("Potion de Soin");
+	super.setNom(nom);
     }
     
     /**
@@ -53,6 +54,12 @@ public class PotionSoin extends Objet {
     public void setPtRegen(int ptRegen) {
 	this.ptRegen = ptRegen;
     }
+
+    public PotionSoin(PotionSoin PS) {
+        super(PS);
+        this.ptRegen = PS.ptRegen;
+    }
+    
     
     
     

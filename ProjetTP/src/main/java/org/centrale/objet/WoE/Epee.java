@@ -23,35 +23,39 @@ public class Epee extends Objet {
     
     /**
      * Constructeur pour spécifier les dégats
+     * 
      * @param ptA Nombre de dégats
      */
-    public Epee(int ptA) {
+    public Epee(String nom, int ptA) {
     ptAttaque = ptA;
     ptDurabilite = 100;
-    super.setNom("Epée");
+    super.setNom(nom);
     }
     
     /**
      * Constructeur d'épée en spécifiant les dégats et la durabilité
+     * @param nom Nom de l'épée
      * @param ptA Nombre de dégats
      * @param ptD Point de durabilité
      */
-    public Epee(int ptA, int ptD) {
+    public Epee(String nom, int ptA, int ptD) {
     ptAttaque = ptA;
     ptDurabilite = ptD;
-    super.setNom("Epée");
+    super.setNom(nom);
     }
+    
+    
     
     /**
      * Utilisation de l'objet
-     * @param ca La créature qui attaque
-     * @param cb La créature attaquée
+     * @param g La créature qui attaque
+     * @param c La créature attaquée
      */
-    public void utilisation(Creature ca, Creature cb) {
-    int degAtt_base = ca.getdegAtt();
-    ca.setdegAtt(degAtt_base + ptAttaque);
-    ca.combattre(cb);
-    ca.setdegAtt(degAtt_base);
+    public void utilisation(Guerrier g, Creature c) {
+    int degAtt_base = g.getDegAtt();
+    g.setDegAtt(degAtt_base + ptAttaque);
+    g.combattre(c);
+    g.setDegAtt(degAtt_base);
     }
 
     /**
@@ -85,5 +89,15 @@ public class Epee extends Objet {
     public void setPtDurabilite(int ptDurabilite) {
     this.ptDurabilite = ptDurabilite;
     }
+
+    /**
+     * Constructeur de copie
+     * @param baatonn baaaaatooonnnn
+     */
+    public Epee(Epee baatonn) {
+        super(baatonn);
+    }
+    
+    
     
 }
