@@ -26,6 +26,7 @@ public class Bulbi extends Personnage {
 
     public Bulbi(int PP) {
         this.PP = PP;
+        setNom("Bulbizart");
     }
 
     public Bulbi(String n, int pV, int dA, int pPar, int paAtt, int paPar, int dMax, Point2D p) {
@@ -37,6 +38,7 @@ public class Bulbi extends Personnage {
     }
 
     public Bulbi() {
+        setNom("Bulbizart");
     }
     
     
