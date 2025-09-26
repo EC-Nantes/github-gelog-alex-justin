@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Création du monde et initialisation des personnage
  * @author Alexandre
  * @version 1.1
  */
