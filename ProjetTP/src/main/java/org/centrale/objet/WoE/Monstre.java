@@ -44,7 +44,7 @@ public class Monstre {
     }
     
     public void deplace() {
-	pos.translate(5, 5);
+	pos.translate(1, 1);
     }
     
     public void affiche() {
