@@ -28,10 +28,13 @@ public class TestWoE {
         
         World Centrale = new World();
         Centrale.creerMondeAlea();
+        System.out.println("");
+        System.out.println("\nPositions intitiales");
         Centrale.robin.affiche();
         Centrale.peon.affiche();
         Centrale.bugs0.affiche();
         Centrale.bugs1.affiche();
+        Centrale.GuillaumeT.affiche();
 	
 	System.out.println("\nTour de jeu pour tester la fonction deplace()");
 	Centrale.tourDeJeu();
@@ -39,6 +42,7 @@ public class TestWoE {
         Centrale.peon.affiche();
         Centrale.bugs0.affiche();
         Centrale.bugs1.affiche();
+        Centrale.GuillaumeT.affiche();
 	
         
         Point2D pou1 = new Point2D();

@@ -19,6 +19,10 @@ public class World {
      */
     public Archer robin;
     /**
+     * Instance d'un archer s'appelant Guillaume Tell
+     */
+    public Archer GuillaumeT ;
+    /**
      * Instance d'un paysan peon
      */
     public Paysan peon;
@@ -75,6 +79,8 @@ public class World {
             }
         }
         robin.setPos(points.get(0));
+        GuillaumeT = new Archer(robin);
+        GuillaumeT.setNom("Guillaume Tell");
         peon.setPos(points.get(1));
         bugs0.setPos(points.get(2));
         bugs1.setPos(points.get(3));

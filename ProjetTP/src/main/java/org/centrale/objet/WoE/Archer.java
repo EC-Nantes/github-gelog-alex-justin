@@ -81,12 +81,12 @@ public class Archer extends Personnage{
     }
     
     /**
-     *
+     * Constructeur de copie des Archers
      * @param a
      */
     public Archer(Archer a){
-        super();
-        this.nbFleches = 0;  
+        super(a);
+        this.nbFleches = a.nbFleches;  
     }
     
     

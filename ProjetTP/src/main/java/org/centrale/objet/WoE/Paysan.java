@@ -28,11 +28,11 @@ public class Paysan extends Personnage {
     }
 
     /**
-     *
-     * @param perso
+     *Constructeur de copie
+     * @param pa le paysan copié
      */
-    public Paysan(Personnage perso) {
-        super(perso);
+    public Paysan(Paysan pa) {
+        super(pa);
     }
 
     /**
