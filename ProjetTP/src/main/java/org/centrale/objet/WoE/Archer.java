@@ -41,6 +41,12 @@ public class Archer extends Personnage{
         super(perso);
     }
     
+    public Archer(Archer a){
+        super();
+        this.nbFleches = 0;  
+    }
+    
+    
     
     
     

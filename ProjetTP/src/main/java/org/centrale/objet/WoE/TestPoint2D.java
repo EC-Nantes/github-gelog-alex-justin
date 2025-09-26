@@ -7,7 +7,7 @@ package org.centrale.objet.WoE;
 /**
  * Les tests des points
  * @author Alexandre
- * @versionJustin1.1
+ * @version 1.1
  */
 public class TestPoint2D {
     public TestPoint2D() {

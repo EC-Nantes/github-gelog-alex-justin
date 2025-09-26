@@ -7,7 +7,7 @@ import java.lang.Math;
 /**
  * Définition des positions
  * @author Alexandre
- * @versionJustin1.1
+ * @version 1.1
  */
 public class Point2D {
     private int x = 0;
