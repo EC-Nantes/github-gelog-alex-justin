@@ -40,4 +40,11 @@ public class Lapin extends Monstre {
     public Lapin() {
 	super();
     }
+    
+    @Override
+    public void affiche(){
+        System.out.print("Lapin / Pt Vie :" + this.getPtVie() + "/ position :" );
+        this.getPos().affiche();
+        System.out.println("");
+    }
 }

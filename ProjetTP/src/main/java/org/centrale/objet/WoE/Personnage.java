@@ -84,7 +84,7 @@ public class Personnage extends Creature{
     @Override
     public void affiche(){
         System.out.print("Nom :" +nom + "/ Pt Vie :" + this.getPtVie() + "/ position :" );
-        this.getPos();
+        this.getPos().affiche();
         System.out.println("");
     }
 }
