@@ -63,14 +63,14 @@ public class TestWoE {
 	Amarok.affiche(); // Loup de la mythologie
 	PierreLapin.affiche();
 	
-	System.out.println("A noter: les affichages dans la console sont uniquement dans le but d'expliciter le processus et seront enlevés ensuite");
+	System.out.println("A noter: les affichages dans la console sont uniquement dans le but d'expliciter le processus et seront enlevés par la ensuite");
 	
 	System.out.println("\nPour les deux prochains essais, la cible est respectivement trop proche et trop loin");
 	Cupidon.combattre(Lancelot);
 	Cupidon.combattre(Jean);
 	System.out.println("Le nombre de flèches devrait rester le même (10): " + Cupidon.getNbFleches());
 	
-	System.out.println("Cupidon va maintenant essayer d'abattre Pierre Lapin qui est à sa portée, il n'aura que 10 essais (son nombre de flèches).");
+	System.out.println("\nCupidon va maintenant essayer d'abattre Pierre Lapin qui est à sa portée, il n'aura que 10 essais (son nombre de flèches).");
 	for (int i = 0; i < 10; i++) {
 	    Cupidon.combattre(PierreLapin);
 	    if (PierreLapin.getPtVie() == 0) {
@@ -94,6 +94,7 @@ public class TestWoE {
 	System.out.println("\nMaintenant que Lancelot est apaisé, nous allons passer à l'histoire de Jean.");
 	System.out.println("Jean est un petit paysan tranquille mais relativement robuste (200 PV).");
 	System.out.println("Grace à cette robustesse, il va en forêt pour cueillir des fleurs.");
+	System.out.println("Amarok n'attaque que 3 fois avant de repartir au fond de la forêt.");
 	for (int i = 0; i < 3; i++) {
 	    Amarok.combattre(Jean);
 	}
