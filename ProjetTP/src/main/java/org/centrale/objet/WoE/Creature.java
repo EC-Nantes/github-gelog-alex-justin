@@ -39,7 +39,7 @@ public class Creature {
     
     /**
      * Constructeur de copie de la classe créature
-     * @param c 
+     * @param c la créature copiée
      */
     public Creature(Creature c) {
 	ptVie = c.ptVie;
