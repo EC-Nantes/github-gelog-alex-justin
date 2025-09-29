@@ -15,12 +15,12 @@ public class Loup extends Monstre {
 
     /**
      * Constructeur complet d'un loup
-     * @param pV
-     * @param dA
-     * @param pPar
-     * @param paAtt
-     * @param paPar
-     * @param pos
+     * @param pV points de vie
+     * @param dA dégâts
+     * @param pPar points de parade
+     * @param paAtt pourcentage de réussite d'attaque 
+     * @param paPar pourcentage de réussite de parade 
+     * @param pos position
      */
     public Loup(int pV, int dA, int pPar, int paAtt, int paPar, Point2D pos) {
 	super(pV, dA, pPar, paAtt, paPar, pos);
@@ -28,10 +28,10 @@ public class Loup extends Monstre {
     
     /**
      * Constructeur de copie
-     * @param l
+     * @param lo le loup copié
      */
-    public Loup(Loup l) {
-	super(l);
+    public Loup(Loup lo) {
+	super(lo);
     }
     
     /**
