@@ -11,8 +11,8 @@ package org.centrale.objet.WoE;
 public class ProjetTP {
 
     /**
-     *
-     * @param args
+     * le main
+     * @param args c'est pour que ça marche
      */
     public static void main(String[] args) {
         TestWoE Test = new TestWoE();

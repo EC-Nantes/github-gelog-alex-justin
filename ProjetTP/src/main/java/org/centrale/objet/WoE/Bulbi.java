@@ -5,7 +5,7 @@
 package org.centrale.objet.WoE;
 
 /**
- * Classe représentant un Bulbizarre (du jeu pokémon) dans le jeu WorldofECn, référence à notre liste BDAù
+ * Classe représentant un Bulbizarre (du jeu pokémon) dans le jeu WorldofECN, référence à notre liste BDA
  * Classe spécifique, liée aux attaques à moyenne distance, ne frappe pas fort mais ne peut pas rater
  * 
  * @author jujus
@@ -43,7 +43,7 @@ public class Bulbi extends Monstre {
 
     /**
      * Constructeur par défaut avec les PP
-     * @param PP
+     * @param PP les PP
      */
     public Bulbi(int PP) {
         this.PP = PP;

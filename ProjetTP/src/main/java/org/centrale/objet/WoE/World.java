@@ -114,7 +114,7 @@ public class World {
     }
     
     /**
-     * 
+     * afficher (vide)
      */
     public void aficheWorld() {
 	//

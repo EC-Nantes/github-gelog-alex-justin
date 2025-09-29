@@ -11,7 +11,7 @@ package org.centrale.objet.WoE;
 public class TestWoE {
 
     /**
-     *
+     * le vrai main
      */
     public static void main(){
         Lapin Alexandre = new Lapin();
