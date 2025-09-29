@@ -51,7 +51,7 @@ public class TestWoE {
 	    Test des foncitons de combat
 	*/
 	System.out.println("\nTest des fonctions de combat avec les créatures suivantes:");
-	Archer Cupidon = new Archer("Cupidon", 50, 20, 10, 50, 50, 10, new Point2D(0, 0), 10);
+	Archer Cupidon = new Archer(10, "Cupidon", 50, 20, 10, 50, 50, 10, new Point2D(0, 0));
 	Guerrier Lancelot = new Guerrier("Lancelot", 70, 30, 20, 75, 50, 0, new Point2D(1, 1));
 	Paysan Jean = new Paysan("Pierre", 200, 0, 30, 0, 60, 0, new Point2D(11, 1));
 	Loup Amarok = new Loup(120, 100, 50, 80, 80, new Point2D(11, 2));
