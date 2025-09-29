@@ -12,14 +12,14 @@ package org.centrale.objet.WoE;
 public class TestPoint2D {
 
     /**
-     *
+     *Constructeur par défaut du test (vide)
      */
     public TestPoint2D() {
         //
     }
     
     /**
-     *
+     *le vrai main
      */
     public void main() {
         Point2D p1 = new Point2D();

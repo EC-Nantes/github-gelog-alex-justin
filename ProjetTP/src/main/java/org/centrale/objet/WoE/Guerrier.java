@@ -29,7 +29,7 @@ public class Guerrier extends Personnage {
 
     /**
      * Constructeur de copie
-     * @param pa le guerrier copié
+     * @param gu le guerrier copié
      */
     public Guerrier(Guerrier gu) {
         super(gu);

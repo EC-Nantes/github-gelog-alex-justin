@@ -43,7 +43,7 @@ public class Bulbi extends Monstre {
 
     /**
      * Constructeur par défaut avec les PP
-     * @param PP
+     * @param PP les PP
      */
     public Bulbi(int PP) {
         this.PP = PP;

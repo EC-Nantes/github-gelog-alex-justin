@@ -43,7 +43,7 @@ public class Loup extends Monstre {
     
     /**
      * Fonction permettant d'attaquer une créature
-     * @param c
+     * @param c la créature cible
      */
     public void combattre(Creature c) {
 	if (this.getPtVie() == 0) return;

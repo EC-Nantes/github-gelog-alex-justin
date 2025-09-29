@@ -24,6 +24,7 @@ public class Epee extends Objet {
     /**
      * Constructeur pour spécifier les dégats
      * 
+     * @param nom nom de l'épée
      * @param ptA Nombre de dégats
      */
     public Epee(String nom, int ptA) {
