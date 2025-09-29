@@ -59,32 +59,32 @@ public class Epee extends Objet {
     }
 
     /**
-     *
-     * @return
+     * Guetter de la quantité de dégâts de l'épée
+     * @return les points de dégâts ingligés par l'épee
      */
     public int getPtAttaque() {
     return ptAttaque;
     }
 
     /**
-     *
-     * @param ptAttaque
+     * Setteur de la quantité de dégâts infligés par l'épée
+     * @param ptAttaque la nouvelle quantité de points de dégâts
      */
     public void setPtAttaque(int ptAttaque) {
     this.ptAttaque = ptAttaque;
     }
 
     /**
-     *
-     * @return
+     * Guetter de la durabilité de l'épée
+     * @return la durabilité de l'épee
      */
     public int getPtDurabilite() {
     return ptDurabilite;
     }
 
     /**
-     *
-     * @param ptDurabilite
+     * Setteur de la quantité de dégâts infligés par l'épée
+     * @param ptDurabilite la nouvelle durabilité
      */
     public void setPtDurabilite(int ptDurabilite) {
     this.ptDurabilite = ptDurabilite;
