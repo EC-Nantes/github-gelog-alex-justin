@@ -13,22 +13,22 @@ package org.centrale.objet.WoE;
 public class Paysan extends Personnage {
 
     /**
-     *
-     * @param n
-     * @param pV
-     * @param dA
-     * @param pPar
-     * @param paAtt
-     * @param paPar
-     * @param dMax
-     * @param p
+     * Constructeur complet des paysans
+     * @param n le nom
+     * @param pV les points de vie
+     * @param dA les dégâts
+     * @param pPar les points de parade
+     * @param paAtt le pourcentage de réussite d'attaque
+     * @param paPar le pourcentage de réussite de parade
+     * @param dMax la portée
+     * @param p la posiiton
      */
     public Paysan(String n, int pV, int dA, int pPar, int paAtt, int paPar, int dMax, Point2D p) {
         super(n, pV, dA, pPar, paAtt, paPar, dMax, p);
     }
 
     /**
-     *Constructeur de copie
+     * Constructeur de copie
      * @param pa le paysan copié
      */
     public Paysan(Paysan pa) {
@@ -36,7 +36,7 @@ public class Paysan extends Personnage {
     }
 
     /**
-     *
+     * Constructeur par défaut
      */
     public Paysan() {
         setNom("Peons");
