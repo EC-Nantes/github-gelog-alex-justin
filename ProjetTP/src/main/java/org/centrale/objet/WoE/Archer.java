@@ -16,16 +16,16 @@ public class Archer extends Personnage{
     private int nbFleches;
 
     /**
-     *
-     * @param nbFleches
-     * @param n
-     * @param pV
-     * @param dA
-     * @param pPar
-     * @param paAtt
-     * @param paPar
-     * @param dMax
-     * @param p
+     * Constructeur de la classe Archer
+     * @param nbFleches Le nombre de flèches que possède l'Archer
+     * @param n le nom de l'Archer
+     * @param pV le nombre de points de vie de l'Archer
+     * @param dA le nombre de dégâts que fait l'Archer
+     * @param pPar la quantité de points de parade de l'Archer
+     * @param paAtt son pourcentage de réussite en attaque
+     * @param paPar son pourcentage de réussite de parade
+     * @param dMax sa portée
+     * @param p sa position
      */
     public Archer(int nbFleches, String n, int pV, int dA, int pPar, int paAtt, int paPar, int dMax, Point2D p) {
         super(n, pV, dA, pPar, paAtt, paPar, dMax, p);
@@ -33,9 +33,9 @@ public class Archer extends Personnage{
     }
 
     /**
-     *
-     * @param nbFleches
-     * @param perso
+     * Constructeur de transformation de personnage en Archer
+     * @param nbFleches son nombre de flèches
+     * @param perso le personnage d'origine
      */
     public Archer(int nbFleches, Personnage perso) {
         super(perso);
@@ -43,8 +43,8 @@ public class Archer extends Personnage{
     }
 
     /**
-     *
-     * @param nbFleches
+     * Constructeur de création par défaut à partir d'un nombre de flèches
+     * @param nbFleches le nombre de flèches
      */
     public Archer(int nbFleches) {
         this.nbFleches = nbFleches;
@@ -52,7 +52,7 @@ public class Archer extends Personnage{
     }
     
     /**
-     *
+     * Constructeur par défaut de la classe Archer
      */
     public Archer(){
         super();
@@ -60,34 +60,10 @@ public class Archer extends Personnage{
         this.nbFleches = 0;
     }
 
-    /**
-     *
-     * @param n
-     * @param pV
-     * @param dA
-     * @param pPar
-     * @param paAtt
-     * @param paPar
-     * @param dMax
-     * @param p
-     * @param nb
-     */
-    public Archer(String n, int pV, int dA, int pPar, int paAtt, int paPar, int dMax, Point2D p, int nb) {
-        super(n, pV, dA, pPar, paAtt, paPar, dMax, p);
-	this.nbFleches = nb;
-    }
 
     /**
-     *
-     * @param perso
-     */
-    public Archer(Personnage perso) {
-        super(perso);
-    }
-    
-    /**
      * Constructeur de copie des Archers
-     * @param a
+     * @param a l'Archer copié
      */
     public Archer(Archer a){
         super(a);
@@ -96,7 +72,7 @@ public class Archer extends Personnage{
     
     /**
      * Fonction permettant d'attaquer une créature
-     * @param c 
+     * @param c la créature cible
      */
     public void combattre(Creature c) {
 	if (this.getPtVie() == 0 || nbFleches == 0) return;
@@ -118,11 +94,18 @@ public class Archer extends Personnage{
 	} else System.out.println("L'archer est trop proche ou trop loin");
     }
     
-    
+    /**
+     * Getter du nobre de flèches
+     * @return un entier : le nombre de flèches
+     */
     public int getNbFleches() {
 	return nbFleches;
     }
-
+    
+    /**
+     * Setter du nombre de flèches
+     * @param nbFleches le nouveau nombre de flèches
+     */
     public void setNbFleches(int nbFleches) {
 	this.nbFleches = nbFleches;
     }
