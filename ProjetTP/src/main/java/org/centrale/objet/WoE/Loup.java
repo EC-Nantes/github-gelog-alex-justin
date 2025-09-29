@@ -70,5 +70,12 @@ public class Loup extends Monstre {
 	    }
 	} else System.out.println("Le guerrier est trop loin de sa cible");
     }
+    
+    @Override
+    public void affiche(){
+        System.out.print("Loup / Pt Vie :" + this.getPtVie() + "/ position :" );
+        this.getPos().affiche();
+        System.out.println("");
+    }
 
 }
