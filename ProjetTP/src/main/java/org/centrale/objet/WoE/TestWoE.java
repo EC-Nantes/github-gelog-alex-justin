@@ -102,9 +102,42 @@ public class TestWoE {
 	} else {
 	    System.out.println("Jean s'en est sortie de peu. Il lui reste " + Jean.getPtVie() + " points de vie.");
 	}
+        
+        Personnage Perso_Blessé = new Personnage();
+        Archer Archer_Blessé = new Archer();
+        Paysan Paysan_Blessé = new Paysan();
+        Guerrier Guerrier_Blessé = new Guerrier();
+        
+	Perso_Blessé.setNom("Personnage blessé");
+        Archer_Blessé.setNom("Archer blessé");
+	Paysan_Blessé.setNom("Paysan blessé");
+        Guerrier_Blessé.setNom("Guerrier blessé");
+        
+        System.out.println("");
+        System.out.println("Essayons nos potions de soin sur les personnages suivants :");
 	
-	
-	
+        Perso_Blessé.affiche();
+        Archer_Blessé.affiche();
+	Paysan_Blessé.affiche();
+        Guerrier_Blessé.affiche();
+        
+        PotionSoin PotionPerso = new PotionSoin();
+        PotionSoin PotionArcher = new PotionSoin();
+        PotionSoin PotionPaysan = new PotionSoin();
+        PotionSoin PotionGuerrier = new PotionSoin();
+        
+        PotionPerso.utilisation(Perso_Blessé);
+        PotionArcher.utilisation(Archer_Blessé);
+        PotionPaysan.utilisation(Paysan_Blessé);
+        PotionGuerrier.utilisation(Guerrier_Blessé);
+        
+        System.out.println("Les personnages suivants sont censés avoir gagné 10pV :");
+        
+        Perso_Blessé.affiche();
+        Archer_Blessé.affiche();
+	Paysan_Blessé.affiche();
+        Guerrier_Blessé.affiche();
+        
     }
     
 }

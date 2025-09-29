@@ -17,7 +17,7 @@ public class Objet {
     
     /**
      * Constructure définissant le nom de l'objet
-     * @param nom
+     * @param nom nom de l'objet créé
      */
     public Objet(String nom) {
 	this.nom = nom; 
@@ -32,23 +32,23 @@ public class Objet {
     
     /**
      * Constructeur de copie
-     * @param o
+     * @param o objet copié
      */
     public Objet(Objet o) {
 	this.nom = o.nom;
     }
 
     /**
-     *
-     * @return
+     * Méthode pour obtenir le nom de l'objet
+     * @return le nom de l'objet
      */
     public String getNom() {
 	return nom;
     }
 
     /**
-     *
-     * @param nom
+     * Méthode pour définir le nom de l'objet
+     * @param nom le nouveau nom de l'objet
      */
     public void setNom(String nom) {
 	this.nom = nom;
