@@ -1,0 +1,104 @@
+    /*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package org.centrale.objet.WoE;
+
+/**
+ * Classe d'une épée
+ * @author Catherine
+ */
+public class Epee extends Objet {
+    private int ptAttaque;
+    private int ptDurabilite;
+    
+    /**
+     * Constructeur de base d'une épée
+     */
+    public Epee() {
+    ptAttaque = 100;
+    ptDurabilite = 100;
+    super.setNom("Epée");
+    }
+    
+    /**
+     * Constructeur pour spécifier les dégats
+     * 
+     * @param nom nom de l'épée
+     * @param ptA Nombre de dégats
+     */
+    public Epee(String nom, int ptA) {
+    ptAttaque = ptA;
+    ptDurabilite = 100;
+    super.setNom(nom);
+    }
+    
+    /**
+     * Constructeur d'épée en spécifiant les dégats et la durabilité
+     * @param nom Nom de l'épée
+     * @param ptA Nombre de dégats
+     * @param ptD Point de durabilité
+     */
+    public Epee(String nom, int ptA, int ptD) {
+    ptAttaque = ptA;
+    ptDurabilite = ptD;
+    super.setNom(nom);
+    }
+    
+    
+    
+    /**
+     * Utilisation de l'objet
+     * @param g La créature qui attaque
+     * @param c La créature attaquée
+     */
+    public void utilisation(Guerrier g, Creature c) {
+    int degAtt_base = g.getDegAtt();
+    g.setDegAtt(degAtt_base + ptAttaque);
+    g.combattre(c);
+    g.setDegAtt(degAtt_base);
+    }
+
+    /**
+     * Guetter de la quantité de dégâts de l'épée
+     * @return les points de dégâts ingligés par l'épee
+     */
+    public int getPtAttaque() {
+    return ptAttaque;
+    }
+
+    /**
+     * Setteur de la quantité de dégâts infligés par l'épée
+     * @param ptAttaque la nouvelle quantité de points de dégâts
+     */
+    public void setPtAttaque(int ptAttaque) {
+    this.ptAttaque = ptAttaque;
+    }
+
+    /**
+     * Guetter de la durabilité de l'épée
+     * @return la durabilité de l'épee
+     */
+    public int getPtDurabilite() {
+    return ptDurabilite;
+    }
+
+    /**
+     * Setteur de la quantité de dégâts infligés par l'épée
+     * @param ptDurabilite la nouvelle durabilité
+     */
+    public void setPtDurabilite(int ptDurabilite) {
+    this.ptDurabilite = ptDurabilite;
+    }
+
+    /**
+     * Constructeur de copie
+     * @param baatonn baaaaatooonnnn
+     */
+    public Epee(Epee baatonn) {
+        super(baatonn);
+    }
+    
+    
+    
+}
