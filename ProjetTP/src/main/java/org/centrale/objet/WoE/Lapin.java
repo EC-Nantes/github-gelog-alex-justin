@@ -14,28 +14,28 @@ package org.centrale.objet.WoE;
 public class Lapin extends Monstre {
 
     /**
-     *
-     * @param pV
-     * @param dA
-     * @param pPar
-     * @param paAtt
-     * @param paPar
-     * @param pos
+     * Constructeur de la classe lapin
+     * @param pV points de vie
+     * @param dA dégâts
+     * @param pPar points de Parade
+     * @param paAtt pourcentage d'attaque réussie
+     * @param paPar pourcentage de parade réussie
+     * @param pos position
      */
     public Lapin(int pV, int dA, int pPar, int paAtt, int paPar, Point2D pos) {
 	super(pV, dA, pPar, paAtt, paPar, pos);
     }
     
     /**
-     *
-     * @param l
+     * Constructeur de copie 
+     * @param l le lapin copié
      */
     public Lapin(Lapin l) {
 	super(l);
     }
     
     /**
-     *
+     * Constructeur par défaut
      */
     public Lapin() {
 	super();

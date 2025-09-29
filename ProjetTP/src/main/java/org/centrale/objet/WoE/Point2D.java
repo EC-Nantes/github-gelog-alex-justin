@@ -14,16 +14,16 @@ public class Point2D {
     private int y = 0;
     
     /**
-     *
+     * Constructeur par défaut 
      */
     public Point2D() {
         //
     }
     
     /**
-     *
-     * @param x
-     * @param y
+     * Constructeur complet
+     * @param x position sur l'axe X
+     * @param y position sur l'axe Y
      */
     public Point2D(int x, int y) {
         this.x = x;
@@ -31,8 +31,8 @@ public class Point2D {
     }
     
     /**
-     *
-     * @param p
+     * Constructeur de copie
+     * @param p la position copié
      */
     public Point2D(Point2D p) {
         this.x = p.x;
@@ -40,41 +40,41 @@ public class Point2D {
     }
     
     /**
-     *
-     * @param v
+     * Setteur de la position X
+     * @param v la position sur l'axe X
      */
     public void setX(int v) {
         x = v;
     }
     
     /**
-     *
-     * @return
+     * Guetteur de la position X
+     * @return la position sur l'axe X
      */
     public int getX() {
         return x;
     }
     
     /**
-     *
-     * @param v
+     * Setteur de la position Y
+     * @param v la position sur l'axe Y
      */
     public void setY(int v) {
         y = v;
     }
     
     /**
-     *
-     * @return
+     * Guetteur de la position Y
+     * @return la position sur l'axe Y
      */
     public int getY() {
         return y;
     }
     
     /**
-     *
-     * @param x
-     * @param y
+     * Setteur de la position
+     * @param x sur l'axe X
+     * @param y sur l'axe Y
      */
     public void setPosition(int x, int y){
         this.x = x;
@@ -82,9 +82,9 @@ public class Point2D {
     }
     
     /**
-     *
-     * @param dx
-     * @param dy
+     * Méthode pour faire des translations
+     * @param dx de combien de pixels on se déplace sur l'axe X
+     * @param dy de combien de pixels on se déplace sur l'axe Y
      */
     public void translate(int dx, int dy) {
         x += dx;
@@ -92,26 +92,22 @@ public class Point2D {
     }
     
     /**
-     *
+     * Méthode pour afficher la position
      */
     public void affiche() {
         System.out.print("[" + x + ", " + y + "]");
     }
     
     /**
-     *
-     * @param p
-     * @return
+     * méthode pour calculer la distance entre le point et un autre
+     * @param p l'autre point
+     * @return la distance entre ce point et p
      */
     public float distance(Point2D p) {
         float val = (x-p.x)*(x-p.x) + (y-p.y)*(y-p.y);
         return (float)Math.sqrt(val);
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -121,9 +117,9 @@ public class Point2D {
     }
 
     /**
-     *
-     * @param obj
-     * @return
+     * comparateur de points
+     * @param obj le points comparé
+     * @return True si ils sont égaux, False sinon
      */
     @Override
     public boolean equals(Object obj) {

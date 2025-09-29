@@ -50,32 +50,32 @@ public class Personnage extends Creature{
     }
 
     /**
-     *
-     * @param nom
+     * Setteur du nom du personnage
+     * @param nom le nouveau nom
      */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
     /**
-     *
-     * @return
+     * Guetteur du nom du personnage
+     * @return le nom du personnage
      */
     public String getNom() {
         return nom;
     }
     
     /**
-     *
-     * @return
+     * getteur de la portée du personnage
+     * @return la portée du personnage (c'est le rayon d'un cercle représentant sa portée)
      */
     public int getDistAttMax() {
         return distAttMax;
     }
 
     /**
-     *
-     * @param distAttMax
+     * Setteur de la portée du perosnnage
+     * @param distAttMax la nouvelle portée du personnage (c'est le rayon d'un cercle représentant sa portée)
      */
     public void setDistAttMax(int distAttMax) {
         this.distAttMax = distAttMax;
