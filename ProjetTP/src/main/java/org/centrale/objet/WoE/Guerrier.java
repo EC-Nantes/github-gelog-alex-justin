@@ -14,14 +14,14 @@ import java.lang.Math;
 public class Guerrier extends Personnage {
     /**
      * Constructeur complet d'un guerrier
-     * @param n
-     * @param pV
-     * @param dA
-     * @param pPar
-     * @param paAtt
-     * @param paPar
-     * @param dMax
-     * @param p
+     * @param n nom
+     * @param pV points de vie
+     * @param dA dégâts 
+     * @param pPar points de Parade
+     * @param paAtt pourcentage de réussite d'Attaque
+     * @param paPar Pourcentage de réussite de parade
+     * @param dMax distance d'attaque max
+     * @param p position
      */
     public Guerrier(String n, int pV, int dA, int pPar, int paAtt, int paPar, int dMax, Point2D p) {
         super(n, pV, dA, pPar, paAtt, paPar, dMax, p);
@@ -44,7 +44,7 @@ public class Guerrier extends Personnage {
     
     /**
      * Fonction permettant d'attaquer une créature
-     * @param c
+     * @param c la créature cible
      */
     public void combattre(Creature c) {
 	if (this.getPtVie() == 0) return;
