@@ -40,21 +40,25 @@ public class PotionSoin extends Objet {
     }
 
     /**
-     *
-     * @return
+     * Getter de la quantité de PV régénérés par la potion
+     * @return la quantité de PV régénérés par la potion
      */
     public int getPtRegen() {
 	return ptRegen;
     }
 
     /**
-     *
-     * @param ptRegen
+     * Setter de la quantité de PV régénérés par la potion
+     * @param ptRegen la nouvelle quantité de PV régénérés par la potion
      */
     public void setPtRegen(int ptRegen) {
 	this.ptRegen = ptRegen;
     }
 
+    /**
+     * Constructeur de copie
+     * @param PS Potion copiée
+     */
     public PotionSoin(PotionSoin PS) {
         super(PS);
         this.ptRegen = PS.ptRegen;
