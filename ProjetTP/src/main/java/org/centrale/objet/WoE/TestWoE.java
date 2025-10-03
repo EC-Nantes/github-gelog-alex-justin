@@ -13,7 +13,7 @@ public class TestWoE {
     /**
      * le vrai main
      */
-    public static void main(){
+    public void main(){
         Lapin Alexandre = new Lapin();
         Point2D p = new Point2D();
         Paysan Justin = new Paysan("Justin", 101, 50, 50, 50, 50, 50, p);
@@ -35,6 +35,7 @@ public class TestWoE {
         Centrale.bugs0.affiche();
         Centrale.bugs1.affiche();
 	
+	
 	System.out.println("\nTour de jeu pour tester la fonction deplace()");
 	Centrale.tourDeJeu();
 	Centrale.robin.affiche();
@@ -47,9 +48,22 @@ public class TestWoE {
         Bulbi Bulbizart = new Bulbi(24, 100, 40, 30, 20, 20, pou1);
         Bulbizart.affiche();
 	
-	/*
-	    Test des foncitons de combat
-	*/
+	// Test des foncitons de combat
+	//testCombat();
+	
+	// Test des fonctions de soin
+	//testSoin();
+	
+        
+        
+        
+    }
+    
+    
+    /**
+     * Test des fonctions de combat
+     */
+    public void testCombat() {
 	System.out.println("\nTest des fonctions de combat avec les créatures suivantes:");
 	Archer Cupidon = new Archer(10, "Cupidon", 50, 20, 10, 50, 50, 10, new Point2D(0, 0));
 	Guerrier Lancelot = new Guerrier("Lancelot", 70, 30, 20, 75, 50, 0, new Point2D(1, 1));
@@ -103,8 +117,14 @@ public class TestWoE {
 	} else {
 	    System.out.println("Jean s'en est sortie de peu. Il lui reste " + Jean.getPtVie() + " points de vie.");
 	}
-        
-        Personnage Perso_Blessé = new Personnage();
+    }
+    
+    
+    /**
+     * Test des fonctions de soin
+     */
+    public void testSoin() {
+	Personnage Perso_Blessé = new Personnage();
         Archer Archer_Blessé = new Archer();
         Paysan Paysan_Blessé = new Paysan();
         Guerrier Guerrier_Blessé = new Guerrier();
@@ -138,7 +158,6 @@ public class TestWoE {
         Archer_Blessé.affiche();
 	Paysan_Blessé.affiche();
         Guerrier_Blessé.affiche();
-        
     }
     
 }
