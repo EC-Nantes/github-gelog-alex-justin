@@ -49,7 +49,12 @@ public class World {
     /**
      * Liste des créatures du monde
      */
-    public List<Creature> creature;
+    public List<Creature> list_creature;
+    
+    /**
+     * Liste des objets du monde
+     */
+    public List<Objet> list_objet;
     
     /**
      * Constructeur du monde pour créer les instances de classe
@@ -62,7 +67,8 @@ public class World {
 	bugs1 = new Lapin();
 	wolfie = new Loup();
 	
-	creature = new ArrayList<>();
+	list_creature = new ArrayList<>();
+	list_objet = new ArrayList<>();
     }
     
  
@@ -143,16 +149,16 @@ public class World {
 	nb[5] = n - s;
 	
 	// Création des différentes créatures
-	for (int i = 0; i < nb[0]; i++) creature.add(new Archer());
-	for (int i = 0; i < nb[1]; i++) creature.add(new Guerrier());
-	for (int i = 0; i < nb[2]; i++) creature.add(new Paysan());
-	for (int i = 0; i < nb[3]; i++) creature.add(new Loup());
-	for (int i = 0; i < nb[4]; i++) creature.add(new Lapin());
-	for (int i = 0; i < nb[5]; i++) creature.add(new Bulbi());
+	for (int i = 0; i < nb[0]; i++) list_creature.add(new Archer());
+	for (int i = 0; i < nb[1]; i++) list_creature.add(new Guerrier());
+	for (int i = 0; i < nb[2]; i++) list_creature.add(new Paysan());
+	for (int i = 0; i < nb[3]; i++) list_creature.add(new Loup());
+	for (int i = 0; i < nb[4]; i++) list_creature.add(new Lapin());
+	for (int i = 0; i < nb[5]; i++) list_creature.add(new Bulbi());
 	
 	// Placement des mobs
-	for (int i = 0; i < creature.size(); i++) {
-	    creature.get(i).setPos(pos.get(i));
+	for (int i = 0; i < list_creature.size(); i++) {
+	    list_creature.get(i).setPos(pos.get(i));
 	}
 	
 	
@@ -169,7 +175,7 @@ public class World {
 	bugs1.deplace();
 	wolfie.deplace();
 	
-	for (Creature c : creature) c.deplace(this);
+	for (Creature c : list_creature) c.deplace(this);
 	
     }
     
@@ -177,7 +183,7 @@ public class World {
      * Affiche chaque creature du monde
      */
     public void aficheWorld() {
-	for (Creature c : creature) {
+	for (Creature c : list_creature) {
 	    c.affiche();
 	}
     }
@@ -193,7 +199,7 @@ public class World {
 	if (pos.getY() < 0 || pos.getY() >= world_size) return false;
 	
 	// Pour ne pas se placer sur un autre mob
-	for (Creature c : creature) {
+	for (Creature c : list_creature) {
 	    if (c.getPos() == pos) return false;
 	}
 	

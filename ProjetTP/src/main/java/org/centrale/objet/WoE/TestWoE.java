@@ -31,20 +31,21 @@ public class TestWoE {
         
 	System.out.println();
         World Centrale = new World();
-        Centrale.creerMondeAlea(20);
+        Centrale.creerMondeAlea(100);
+	
 	Centrale.aficheWorld();
 	
 	System.out.println();
 	Centrale.tourDeJeu();
 	Centrale.aficheWorld();
         
+	
 	/*System.out.println("");
         System.out.println("\nPositions intitiales");
         Centrale.robin.affiche();
         Centrale.peon.affiche();
         Centrale.bugs0.affiche();
         Centrale.bugs1.affiche();
-	
 	
 	System.out.println("\nTour de jeu pour tester la fonction deplace()");
 	Centrale.tourDeJeu();
