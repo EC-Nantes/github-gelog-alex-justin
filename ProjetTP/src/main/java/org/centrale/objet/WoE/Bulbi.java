@@ -67,7 +67,7 @@ public class Bulbi extends Monstre {
     @Override
     public void affiche(){
         System.out.print("Bulbiz'art" + "PP :" +PP + "/ Pt Vie :" + this.getPtVie() + "/ position :" );
-        this.getPos();
+        this.getPos().affiche();
         System.out.println("");
     }
     

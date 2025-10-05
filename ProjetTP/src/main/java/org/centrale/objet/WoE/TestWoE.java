@@ -4,6 +4,9 @@
  */
 package org.centrale.objet.WoE;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 /**
  * Classe de tests des différentes classes
  * @author jujus
@@ -26,9 +29,16 @@ public class TestWoE {
         Justin.affiche();
         Alexandre.affiche();
         
+	System.out.println();
         World Centrale = new World();
-        Centrale.creerMondeAlea();
-        System.out.println("");
+        Centrale.creerMondeAlea(20);
+	Centrale.aficheWorld();
+	
+	System.out.println();
+	Centrale.tourDeJeu();
+	Centrale.aficheWorld();
+        
+	/*System.out.println("");
         System.out.println("\nPositions intitiales");
         Centrale.robin.affiche();
         Centrale.peon.affiche();
@@ -41,12 +51,9 @@ public class TestWoE {
 	Centrale.robin.affiche();
         Centrale.peon.affiche();
         Centrale.bugs0.affiche();
-        Centrale.bugs1.affiche();
+        Centrale.bugs1.affiche();*/
 	
         
-        Point2D pou1 = new Point2D();
-        Bulbi Bulbizart = new Bulbi(24, 100, 40, 30, 20, 20, pou1);
-        Bulbizart.affiche();
 	
 	// Test des foncitons de combat
 	//testCombat();
@@ -54,7 +61,12 @@ public class TestWoE {
 	// Test des fonctions de soin
 	//testSoin();
 	
-        
+	// Test de la vitesse des conteneurs
+        //testConteneur(100);
+	//testConteneur(1000);
+	//testConteneur(10000);
+	//testConteneur(100000);
+	//testConteneur(1000000);
         
         
     }
@@ -158,6 +170,71 @@ public class TestWoE {
         Archer_Blessé.affiche();
 	Paysan_Blessé.affiche();
         Guerrier_Blessé.affiche();
+    }
+    
+    /**
+     * Test de vitesse des différents conteneurs
+     * @param n Le nombre d'instance à construire
+     */
+    public void testConteneur(int n) {
+	System.out.println("Création des instances");
+	LinkedList<Personnage> maLinkedListePerso = new LinkedList<>();
+	ArrayList<Personnage> maArrayListePerso = new ArrayList<>();
+	
+	System.out.print("Création des données pour " + n + " perso: ");
+	for (int i = 0; i < n; i++) {
+	    Personnage p = new Personnage();
+	    maLinkedListePerso.add(p);
+	    maArrayListePerso.add(p);
+	}
+	System.out.println("DONE");
+	
+	
+	System.out.println("Boucle basé sur la taille");
+	
+	// LinkedList
+	long a = System.nanoTime();
+	long b = 0;
+	for (int i = 0; i < maLinkedListePerso.size(); i++) {
+	    b += maLinkedListePerso.get(i).getPtVie();
+	}
+	a = System.nanoTime() - a;
+	System.out.println("\ttemps pour LinkedList: " + a + ", somme PV: " + b);
+	
+	// ArrayList
+	a = System.nanoTime();
+	b = 0;
+	for (int i = 0; i < maArrayListePerso.size(); i++) {
+	    b += maArrayListePerso.get(i).getPtVie();
+	}
+	a = System.nanoTime() - a;
+	System.out.println("\ttemps pour ArrayList:  " + a + ", somme PV: " + b);
+	
+	
+	System.out.println("Boucle basé sur les itérateurs");
+	
+	// LinkedList
+	a = System.nanoTime();
+	b = 0;
+	for (Personnage p : maLinkedListePerso) {
+	    b += p.getPtVie();
+	}
+	a = System.nanoTime() - a;
+	System.out.println("\ttemps pour LinkedList: " + a + ", somme PV: " + b);
+	
+	// ArrayList
+	a = System.nanoTime();
+	b = 0;
+	for (Personnage p : maArrayListePerso) {
+	    b+= p.getPtVie();
+	}
+	a = System.nanoTime() - a;
+	System.out.println("\ttemps pour ArrayList:  " + a + ", somme PV: " + b);
+	
+	System.out.println("");
+	
+	
+	
     }
     
 }

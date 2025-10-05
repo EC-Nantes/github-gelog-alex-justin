@@ -44,17 +44,12 @@ public class World {
     public Loup wolfie;
     
     
+    private final int world_size = 50;
     
     /**
-     * Limite du plateau selon x
-     * Cela sera à changer en fonction des nouvelles contraintes
+     * Liste des créatures du monde
      */
-    private int x_max = 100;
-    /**
-     * Limite du plateau selon y
-     * Cela sera à changer en fonction des nouvelles contraintes
-     */
-    private int y_max = 100;
+    public List<Creature> creature;
     
     /**
      * Constructeur du monde pour créer les instances de classe
@@ -66,23 +61,43 @@ public class World {
 	bugs0 = new Lapin();
 	bugs1 = new Lapin();
 	wolfie = new Loup();
+	
+	creature = new ArrayList<>();
     }
     
+ 
+    
     /**
-     * Place les entités dans le monde de façon aléatoire
+     * Crée un nombre aléatoire de créatures et les place les entités dans le monde de façon aléatoire
      * Cette fonction ne doit être appelé qu'une seule fois pour l'initialisation
      */
     public void creerMondeAlea() {
 	Random rand = new Random();
+	creerMondeAlea(rand.nextInt(50));
+    }
+    
+    /**
+     * Crée un nombre n de créatures et les place les entités dans le monde de façon aléatoire
+     * Cette fonction ne doit être appelé qu'une seule fois pour l'initialisation
+     * @param n 
+     */
+    public void creerMondeAlea(int n) {
+	/* *************************************************** */
+	/* **** Problème lorsque n tend vers world_size^2 **** */
+	/* *************************************************** */
+	Random rand = new Random();
 	
-	// rand.nextInt(100);
+	/*
+	Cette partie est pour ne pas créer d'erreur pour les versions précédentes
+	L'idéal serait de ne plus avoir robin, guillaumeT, peon, bogs0, bugs1 et wolfie
+	*/
 	
 	// Création d'une liste vide de Point2D
         List<Point2D> points = new ArrayList<>();
 
         while (points.size() < 6) {
-            int x = rand.nextInt(x_max);
-            int y = rand.nextInt(y_max);
+            int x = rand.nextInt(world_size);
+            int y = rand.nextInt(world_size);
             
             Point2D p = new Point2D(x,y);
 
@@ -90,7 +105,8 @@ public class World {
                 points.add(p);
             }
         }
-        robin.setPos(points.get(0));
+        
+	robin.setPos(points.get(0));
         GuillaumeT = new Archer(robin);
         GuillaumeT.setNom("Guillaume Tell");
         peon.setPos(points.get(1));
@@ -98,6 +114,48 @@ public class World {
         bugs1.setPos(points.get(3));
 	wolfie.setPos(points.get(4));
 	grosBill.setPos(points.get(5));
+	
+	
+	
+	
+	// Création d'une liste vide de Point2D
+        List<Point2D> pos = new ArrayList<>();
+	
+	// Répartition des mobs dans le monde
+        while (pos.size() < n) {
+            int x = rand.nextInt(world_size);
+            int y = rand.nextInt(world_size);
+            
+            Point2D p = new Point2D(x,y);
+
+            if (!pos.contains(p)) pos.add(p);
+        }
+	
+
+	// Création d'une répartition aléatoire de différents type de créature
+	int[] nb = new int[6];
+	int s = 0;	
+	for (int i = 0; i < 5; i++) {
+	    int a = rand.nextInt(n-s);
+	    s += a;
+	    nb[i] = a;
+	}
+	nb[5] = n - s;
+	
+	// Création des différentes créatures
+	for (int i = 0; i < nb[0]; i++) creature.add(new Archer());
+	for (int i = 0; i < nb[1]; i++) creature.add(new Guerrier());
+	for (int i = 0; i < nb[2]; i++) creature.add(new Paysan());
+	for (int i = 0; i < nb[3]; i++) creature.add(new Loup());
+	for (int i = 0; i < nb[4]; i++) creature.add(new Lapin());
+	for (int i = 0; i < nb[5]; i++) creature.add(new Bulbi());
+	
+	// Placement des mobs
+	for (int i = 0; i < creature.size(); i++) {
+	    creature.get(i).setPos(pos.get(i));
+	}
+	
+	
     }
     
     /**
@@ -111,12 +169,37 @@ public class World {
 	bugs1.deplace();
 	wolfie.deplace();
 	
+	for (Creature c : creature) c.deplace(this);
+	
     }
     
     /**
-     * afficher (vide)
+     * Affiche chaque creature du monde
      */
     public void aficheWorld() {
-	//
+	for (Creature c : creature) {
+	    c.affiche();
+	}
+    }
+    
+    /**
+     * Valide la position d'un mob sur le jeu
+     * @param pos
+     * @return 
+     */
+    public boolean validPos(Point2D pos) {
+	// Pour ne pas allez hors de la zone de jeu
+	if (pos.getX() < 0 || pos.getX() >= world_size) return false;
+	if (pos.getY() < 0 || pos.getY() >= world_size) return false;
+	
+	// Pour ne pas se placer sur un autre mob
+	for (Creature c : creature) {
+	    if (c.getPos() == pos) return false;
+	}
+	
+	
+	
+	// Si aucune restriction n'a été enfrein, la position est validée
+	return true;
     }
 }

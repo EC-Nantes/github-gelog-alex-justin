@@ -5,6 +5,7 @@
 package org.centrale.objet.WoE;
 
 import java.util.Random;
+import java.util.ArrayList;
 
 /**
  * La classe qui représente tous les "êtres" de WoE
@@ -63,7 +64,7 @@ public class Creature {
     
     /**
      * Méthode de déplacement de la classe Monstre
-     * Déplacement aléatoire sur une des cases adjacente au monstre (équiprobable)
+     * Déplacement aléatoire sur une des cases adjacente au monstre (équiprobable) sans contraintes
      */
     public void deplace() {
 	Random rand = new Random();
@@ -76,6 +77,55 @@ public class Creature {
 	    dy = rand.nextInt(3) - 1;
 	}
 	pos.translate(dx, dy);
+    }
+    
+    /**
+     * Déplace un mob sans altercation avec un autre mob ou un élément du jeu non fusionnable
+     * @param w Le monde dans lequelle évolue le mob
+     */
+    public void deplace(World w) {
+	Random rand = new Random();
+	
+	ArrayList<Point2D> temp = new ArrayList<>(); // Liste ayant toutes les positions
+	ArrayList<Point2D> move = new ArrayList<>(); // Même chose mais mélangée
+	int x = pos.getX();
+	int y = pos.getY();
+	
+	// Lister les déplacements possibles
+	// Il y en a 8
+	for (int dx = -1; dx < 2; dx++) {
+	    for (int dy = -1; dy < 2; dy++) {
+		// Exclusion du non déplacement du mob
+		if (dx == 0 && dy == 0) continue;
+		
+		temp.add(new Point2D(dx+x, dy+y));
+	    }
+	}
+	
+	// Mélange des poistions pour les avoir dans le désordre
+	while (temp.size() > 0) {
+	    // Sélection d'une des positions de façon aléatoire
+	    int index = rand.nextInt(temp.size());
+	    
+	    Point2D position = temp.get(index);
+	    
+	    // Enregistrement dans la nouvelle structure de donnée
+	    move.add(position);
+	    
+	    // Enlèvement de la position dans temp pour ne pas avoir de doublont
+	    temp.remove(index);
+	}
+	
+	// Test des déplacements dans le monde
+	for (Point2D p : move) {
+	    if (w.validPos(p)) {
+		pos = p;
+		break;
+	    }
+	}
+	
+	// Il y a la possibilité que le mob ne puisse pas de déplacer,
+	// Dans ce cas il ne bougera pas
     }
     
     /**
