@@ -6,6 +6,7 @@ package org.centrale.objet.WoE;
 
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * La classe qui représente tous les "êtres" de WoE
@@ -85,8 +86,8 @@ public class Creature {
     public void deplace() {
 	Random rand = new Random();
 	
-	ArrayList<Point2D> temp = new ArrayList<>(); // Liste ayant toutes les positions
-	ArrayList<Point2D> move = new ArrayList<>(); // Même chose mais mélangée
+	LinkedList<Point2D> temp = new LinkedList<>(); // Liste ayant toutes les positions
+	LinkedList<Point2D> move = new LinkedList<>(); // Même chose mais mélangée
 	int x = pos.getX();
 	int y = pos.getY();
 	
