@@ -23,13 +23,13 @@ public class TestWoE {
         Justin.affiche();
         Alexandre.affiche();
         for (int i=0 ; i<3; i++){    
-            Justin.deplace();
-            Alexandre.deplace();
+            Justin.deplaceLibre();
+            Alexandre.deplaceLibre();
         }
         Justin.affiche();
         Alexandre.affiche();
         
-	System.out.println();
+	System.out.println("\nCréation du monde");
         World Centrale = new World();
         Centrale.creerMondeAlea(100);
 	

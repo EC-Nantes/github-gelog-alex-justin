@@ -43,18 +43,20 @@ public class World {
      */
     public Loup wolfie;
     
-    
-    private final int world_size = 50;
+    /**
+     * Taille du monde carré
+     */
+    static public final int world_size = 50;
     
     /**
      * Liste des créatures du monde
      */
-    public List<Creature> list_creature;
+    static public List<Creature> list_creature;
     
     /**
      * Liste des objets du monde
      */
-    public List<Objet> list_objet;
+    static public List<Objet> list_objet;
     
     /**
      * Constructeur du monde pour créer les instances de classe
@@ -168,14 +170,14 @@ public class World {
      * Itère le déplacement des entités
      */
     public void tourDeJeu() {
-	robin.deplace();
-	peon.deplace();
-	grosBill.deplace();
-	bugs0.deplace();
-	bugs1.deplace();
-	wolfie.deplace();
+	robin.deplaceLibre();
+	peon.deplaceLibre();
+	grosBill.deplaceLibre();
+	bugs0.deplaceLibre();
+	bugs1.deplaceLibre();
+	wolfie.deplaceLibre();
 	
-	for (Creature c : list_creature) c.deplace(this);
+	for (Creature c : list_creature) c.deplace();
 	
     }
     
@@ -193,10 +195,13 @@ public class World {
      * @param pos
      * @return 
      */
-    public boolean validPos(Point2D pos) {
+    static public boolean validPos(Point2D pos) {
 	// Pour ne pas allez hors de la zone de jeu
 	if (pos.getX() < 0 || pos.getX() >= world_size) return false;
 	if (pos.getY() < 0 || pos.getY() >= world_size) return false;
+	
+	// On se prémunit du cas ou list_creature n'est pas définit
+	if (list_creature == null) return true;
 	
 	// Pour ne pas se placer sur un autre mob
 	for (Creature c : list_creature) {

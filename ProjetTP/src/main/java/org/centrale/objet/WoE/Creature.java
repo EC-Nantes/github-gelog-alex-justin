@@ -66,7 +66,7 @@ public class Creature {
      * Méthode de déplacement de la classe Monstre
      * Déplacement aléatoire sur une des cases adjacente au monstre (équiprobable) sans contraintes
      */
-    public void deplace() {
+    public void deplaceLibre() {
 	Random rand = new Random();
 	
 	// Pour avoir un vecteur dont les valeurs sont entre -1 et 1
@@ -81,9 +81,8 @@ public class Creature {
     
     /**
      * Déplace un mob sans altercation avec un autre mob ou un élément du jeu non fusionnable
-     * @param w Le monde dans lequelle évolue le mob
      */
-    public void deplace(World w) {
+    public void deplace() {
 	Random rand = new Random();
 	
 	ArrayList<Point2D> temp = new ArrayList<>(); // Liste ayant toutes les positions
@@ -103,7 +102,7 @@ public class Creature {
 	}
 	
 	// Mélange des poistions pour les avoir dans le désordre
-	while (temp.size() > 0) {
+	while (!temp.isEmpty()) {
 	    // Sélection d'une des positions de façon aléatoire
 	    int index = rand.nextInt(temp.size());
 	    
@@ -118,7 +117,7 @@ public class Creature {
 	
 	// Test des déplacements dans le monde
 	for (Point2D p : move) {
-	    if (w.validPos(p)) {
+	    if (World.validPos(p)) {
 		pos = p;
 		break;
 	    }
