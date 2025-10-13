@@ -5,13 +5,12 @@
 package org.centrale.objet.WoE;
 
 import java.util.Random;
-import java.lang.Math;
 
 /**
  * Classe d'un guerrier
  * @author Catherine
  */
-public class Guerrier extends Personnage {
+public class Guerrier extends Personnage implements Combattant {
     /**
      * Constructeur complet d'un guerrier
      * @param n nom
@@ -46,6 +45,7 @@ public class Guerrier extends Personnage {
      * Fonction permettant d'attaquer une créature
      * @param c la créature cible
      */
+    @Override
     public void combattre(Creature c) {
 	if (this.getPtVie() == 0) return;
 	

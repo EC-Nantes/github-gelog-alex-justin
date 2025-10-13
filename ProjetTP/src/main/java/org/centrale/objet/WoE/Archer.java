@@ -5,14 +5,13 @@
 package org.centrale.objet.WoE;
 
 import java.util.Random;
-import java.lang.Math;
 
 /**
  * Classe représentant un Archer dans le jeu World of ECN.
  * Hérite de la classe Personnage et ajoute des caractéristiques spécifiques liées aux attaques à distance.
  * @author jujus
  */
-public class Archer extends Personnage{
+public class Archer extends Personnage implements Combattant{
     private int nbFleches;
 
     /**
@@ -74,6 +73,7 @@ public class Archer extends Personnage{
      * Fonction permettant d'attaquer une créature
      * @param c la créature cible
      */
+    @Override
     public void combattre(Creature c) {
 	if (this.getPtVie() == 0 || nbFleches == 0) return;
 	
