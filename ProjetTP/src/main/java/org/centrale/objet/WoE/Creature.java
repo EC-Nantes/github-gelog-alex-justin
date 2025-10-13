@@ -66,7 +66,6 @@ public class Creature implements Deplacable {
      * Méthode de déplacement de la classe Monstre
      * Déplacement aléatoire sur une des cases adjacente au monstre (équiprobable) sans contraintes
      */
-    @Override
     public void deplaceLibre() {
 	Random rand = new Random();
 	

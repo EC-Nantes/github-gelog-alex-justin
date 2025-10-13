@@ -14,9 +14,5 @@ public interface Deplacable {
      * @param w Le monde dans lequel on se déplace
      */
     public void deplace(World w);
-    
-    /**
-     * méthode pour se déplacer librement
-     */
-    public void deplaceLibre();
+
 }
