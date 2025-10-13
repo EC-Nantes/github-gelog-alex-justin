@@ -12,13 +12,12 @@ import java.util.LinkedList;
  * 
  * @author jujus
  */
-public class Creature implements Deplacable {
+public class Creature extends ElementDeJeu implements Deplacable {
     private int ptVie;
     private int degAtt;
     private int ptPar;
     private int pageAtt;
     private int pagePar;
-    private Point2D pos;
 
     /**
      * Constructeur de la classe Créature
@@ -30,12 +29,12 @@ public class Creature implements Deplacable {
      * @param pos position de la Créature
      */
     public Creature(int pV, int dA, int pPar, int paAtt, int paPar, Point2D pos) {
-	ptVie = pV;
+	super(pos);
+        ptVie = pV;
 	degAtt = dA;
 	ptPar = pPar;
 	pageAtt = paAtt;
 	pagePar = paPar;
-	this.pos = new Point2D(pos);
     }
     
     /**
@@ -43,23 +42,24 @@ public class Creature implements Deplacable {
      * @param c la créature copiée
      */
     public Creature(Creature c) {
-	ptVie = c.ptVie;
-	degAtt = c.degAtt;
-	ptPar = c.ptPar;
-	pageAtt = c.pageAtt;
-	pagePar = c.pagePar;
+	super(c);
+        this.ptVie = c.ptVie;
+	this.degAtt = c.degAtt;
+	this.ptPar = c.ptPar;
+	this.pageAtt = c.pageAtt;
+	this.pagePar = c.pagePar;
     }
     
     /**
      * Constructeur par défaut de la classe créature
      */
     public Creature() {
+        super();
 	ptVie = 100;
 	degAtt = 10;
 	ptPar = 10;
 	pageAtt = 10;
 	pagePar = 10;
-	pos = new Point2D(0, 0);
     }
     
     /**
@@ -76,7 +76,7 @@ public class Creature implements Deplacable {
 	    dx = rand.nextInt(3) - 1;
 	    dy = rand.nextInt(3) - 1;
 	}
-	pos.translate(dx, dy);
+	super.getPos().translate(dx, dy);
     }
     
     /**
@@ -89,8 +89,8 @@ public class Creature implements Deplacable {
 	
 	LinkedList<Point2D> temp = new LinkedList<>(); // Liste ayant toutes les positions
 	LinkedList<Point2D> move = new LinkedList<>(); // Même chose mais mélangée
-	int x = pos.getX();
-	int y = pos.getY();
+	int x = super.getPos().getX();
+	int y = super.getPos().getY();
 	
 	// Lister les déplacements possibles
 	// Il y en a 8
@@ -120,7 +120,7 @@ public class Creature implements Deplacable {
 	// Test des déplacements dans le monde
 	for (Point2D p : move) {
 	    if (w.validPos(p)) {
-		pos = p;
+		super.setPos(p);
 		break;
 	    }
 	}
@@ -134,7 +134,7 @@ public class Creature implements Deplacable {
      */
     public void affiche() {
 	System.out.print("Pt Vie :" + ptVie + "/ position :" );
-        pos.affiche();
+        super.getPos().affiche();
         System.out.println("");
     }
     
@@ -187,14 +187,6 @@ public class Creature implements Deplacable {
     }
 
     /**
-     * le gettter de la position
-     * @return la position de la créature
-     */
-    public Point2D getPos() {
-	return pos;
-    }
-
-    /**
      * le setter de la quantité de dégâts infligés
      * @param degAtt la quantité de dégâts
      */
@@ -224,14 +216,6 @@ public class Creature implements Deplacable {
      */
     public void setPagePar(int pagePar) {
 	this.pagePar = pagePar;
-    }
-
-    /**
-     * le setter de la position
-     * @param pos la nouvelle position
-     */
-    public void setPos(Point2D pos) {
-	this.pos = pos;
     }
     
 }

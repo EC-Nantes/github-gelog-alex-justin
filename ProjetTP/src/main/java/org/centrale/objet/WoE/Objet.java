@@ -8,7 +8,7 @@ package org.centrale.objet.WoE;
  * Classe abstraite pour générer des objets
  * @author Catherine
  */
-public class Objet {
+public class Objet extends ElementDeJeu{
 
     /**
      * Nom de l'objet
@@ -18,8 +18,10 @@ public class Objet {
     /**
      * Constructure définissant le nom de l'objet
      * @param nom nom de l'objet créé
+     * @param pos la position de l'objet
      */
-    public Objet(String nom) {
+    public Objet(String nom, Point2D pos) {
+        super(pos);
 	this.nom = nom; 
     }
     
@@ -27,6 +29,7 @@ public class Objet {
      * Constructeur par défaut donnant 'Objet' à l'objet
      */
     public Objet() {
+        super();
 	this.nom = "Objet";
     }
     
@@ -35,6 +38,7 @@ public class Objet {
      * @param o objet copié
      */
     public Objet(Objet o) {
+        super(o);
 	this.nom = o.nom;
     }
 

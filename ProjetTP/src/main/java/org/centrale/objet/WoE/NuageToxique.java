@@ -6,19 +6,32 @@ package org.centrale.objet.WoE;
 import java.util.Random;
 
 /**
- *
+ * Classe des nuages toxiques, des nuages dangereux qui se déplacent et blessent les créatures qui respirent son air
  * @author jujus
  */
 public class NuageToxique extends Objet implements Deplacable, Combattant {
     private Point2D pos;          // position du nuage
     private int rayon;            // rayon d’effet du nuage
     private int degats;           // dégâts infligés aux créatures proches
-
+    
     public NuageToxique(Point2D pos, int rayon, int degats) {
         this.pos = pos;
         this.rayon = rayon;
         this.degats = degats;
     }
+    
+    public NuageToxique(){
+        this.pos = new Point2D();
+        this.rayon = 1;
+        this.degats = 5;
+    }
+    
+    public NuageToxique(NuageToxique nuto){
+        this.pos = nuto.pos;
+        this.rayon = nuto.rayon;
+        this.degats = nuto.degats;
+    }
+    
 
     public Point2D getPos() { return pos; }
     public void setPos(Point2D pos) { this.pos = pos; }

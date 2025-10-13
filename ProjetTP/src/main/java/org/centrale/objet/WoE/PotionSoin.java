@@ -15,6 +15,7 @@ public class PotionSoin extends Objet {
      * Constructeur d'une potion de soin avec une régénération par défaut de 10 points de vie
      */
     public PotionSoin() {
+        super();
 	ptRegen = 10;
 	super.setNom("Potion de Soin");
     }
@@ -23,10 +24,11 @@ public class PotionSoin extends Objet {
      * Constructeur pour fixer le nombre de point de régénération
      * @param ptV Points de vie régénérés par la potion
      * @param nom Le nom de la potion
+     * @param pos La position de l'objet
      */
-    public PotionSoin(String nom, int ptV) {
+    public PotionSoin(String nom, int ptV, Point2D pos) {
+        super(nom, pos);
 	ptRegen = ptV;
-	super.setNom(nom);
     }
     
     /**
