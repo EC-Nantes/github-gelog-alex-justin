@@ -15,38 +15,13 @@ import java.util.List;
  */
 public class World {
     /**
-     * Instance d'un archer s'appelant Robin
+     * Largeur du monde
      */
-    public Archer robin;
+    public int world_max_x = 50;
     /**
-     * Instance d'un archer s'appelant Guillaume Tell
+     * Longueur du monde
      */
-    public Archer GuillaumeT ;
-    /**
-     * Instance d'un guerrier s'appelant grosBill
-     */
-    public Guerrier grosBill;
-    /**
-     * Instance d'un paysan peon
-     */
-    public Paysan peon;
-    /**
-     * Instance de lapin
-     */
-    public Lapin bugs0;
-    /**
-     * Instance de lapin
-     */
-    public Lapin bugs1;
-    /**
-     * Instance d'un loup s'appelant wolfie
-     */
-    public Loup wolfie;
-    
-    /**
-     * Taille du monde carré
-     */
-    public final int world_size = 50;
+    public int world_max_y = 50;
     
     /**
      * Liste des créatures du monde
@@ -60,15 +35,23 @@ public class World {
     
     /**
      * Constructeur du monde pour créer les instances de classe
+     * La taille par défaut est de 50x50
      */
     public World() {
-	robin = new Archer();
-	peon = new Paysan();
-	grosBill = new Guerrier();
-	bugs0 = new Lapin();
-	bugs1 = new Lapin();
-	wolfie = new Loup();
-	
+	world_max_x = 50;
+	world_max_y = 50;
+	list_creature = new ArrayList<>();
+	list_objet = new ArrayList<>();
+    }
+    
+    /**
+     * Constructeur du monde pour créer les instances de classe
+     * @param max_x Largeur du monde
+     * @param max_y Longueur du monde
+     */
+    public World(int max_x, int max_y) {
+	world_max_x = max_x;
+	world_max_y = max_y;
 	list_creature = new ArrayList<>();
 	list_objet = new ArrayList<>();
     }
@@ -94,38 +77,7 @@ public class World {
 	/* **** Problème lorsque n tend vers world_size^2 **** */
 	/* *************************************************** */
 	Random rand = new Random();
-	
-	/*
-	Cette partie est pour ne pas créer d'erreur pour les versions précédentes
-	L'idéal serait de ne plus avoir robin, guillaumeT, peon, bogs0, bugs1 et wolfie
-	*/
-	
-	// Création d'une liste vide de Point2D
-        List<Point2D> points = new ArrayList<>();
 
-        while (points.size() < 6) {
-            int x = rand.nextInt(world_size);
-            int y = rand.nextInt(world_size);
-            
-            Point2D p = new Point2D(x,y);
-
-            if (!points.contains(p)){
-                points.add(p);
-            }
-        }
-        
-	robin.setPos(points.get(0));
-        GuillaumeT = new Archer(robin);
-        GuillaumeT.setNom("Guillaume Tell");
-        peon.setPos(points.get(1));
-        bugs0.setPos(points.get(2));
-        bugs1.setPos(points.get(3));
-	wolfie.setPos(points.get(4));
-	grosBill.setPos(points.get(5));
-	
-	
-	
-	
 	// Création d'une liste vide de Point2D
         List<Point2D> pos = new ArrayList<>();
 	
@@ -172,15 +124,7 @@ public class World {
      * Itère le déplacement des entités
      */
     public void tourDeJeu() {
-	robin.deplaceLibre();
-	peon.deplaceLibre();
-	grosBill.deplaceLibre();
-	bugs0.deplaceLibre();
-	bugs1.deplaceLibre();
-	wolfie.deplaceLibre();
-	
 	for (Creature c : list_creature) c.deplace(this);
-	
     }
     
     /**
@@ -199,8 +143,8 @@ public class World {
      */
     public boolean validPos(Point2D pos) {
 	// Pour ne pas allez hors de la zone de jeu
-	if (pos.getX() < 0 || pos.getX() >= world_size) return false;
-	if (pos.getY() < 0 || pos.getY() >= world_size) return false;
+	if (pos.getX() < 0 || pos.getX() >= world_max_x) return false;
+	if (pos.getY() < 0 || pos.getY() >= world_max_y) return false;
 	
 	// On se prémunit du cas ou list_creature n'est pas définit
 	if (list_creature == null) return true;
@@ -209,7 +153,6 @@ public class World {
 	for (Creature c : list_creature) {
 	    if (c.getPos().equals(pos)) return false;
 	}
-	
 	
 	
 	// Si aucune restriction n'a été enfrein, la position est validée
