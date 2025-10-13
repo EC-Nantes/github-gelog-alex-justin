@@ -83,8 +83,8 @@ public class World {
 	
 	// Répartition des mobs dans le monde
         while (pos.size() < n) {
-            int x = rand.nextInt(world_size);
-            int y = rand.nextInt(world_size);
+            int x = rand.nextInt(world_max_x);
+            int y = rand.nextInt(world_max_y);
             
             Point2D p = new Point2D(x,y);
 
