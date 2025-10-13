@@ -213,7 +213,12 @@ public class World {
 	// Si aucune restriction n'a été enfrein, la position est validée
 	return true;
     }
-        
+       
+    /**
+     * Méthode permettant de trouver une des créature du monde à partir du nom de sa classe
+     * @param nomClasse String du nom de la classe
+     * @return une créature correspondante
+     */
     public Creature trouverCreatureParClasse(String nomClasse) {
         nomClasse = nomClasse.toLowerCase(); // pour ignorer la casse
 
