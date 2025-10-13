@@ -12,7 +12,7 @@ import java.util.LinkedList;
  * 
  * @author jujus
  */
-public class Creature {
+public class Creature implements Deplacable {
     private int ptVie;
     private int degAtt;
     private int ptPar;
@@ -66,6 +66,7 @@ public class Creature {
      * Méthode de déplacement de la classe Monstre
      * Déplacement aléatoire sur une des cases adjacente au monstre (équiprobable) sans contraintes
      */
+    @Override
     public void deplaceLibre() {
 	Random rand = new Random();
 	
@@ -83,6 +84,7 @@ public class Creature {
      * Déplace un mob sans altercation avec un autre mob ou un élément du jeu non fusionnable
      * @param w LE monde dans lequel on se déplace
      */
+    @Override
     public void deplace(World w) {
 	Random rand = new Random();
 	
