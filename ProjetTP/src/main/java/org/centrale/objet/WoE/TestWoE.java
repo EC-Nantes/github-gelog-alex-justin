@@ -18,18 +18,6 @@ public class TestWoE {
      * le vrai main
      */
     public void main(){
-        Lapin Alexandre = new Lapin();
-        Point2D p = new Point2D();
-        Paysan Justin = new Paysan("Justin", 101, 50, 50, 50, 50, 50, p);
-        Justin.affiche();
-        Alexandre.affiche();
-        for (int i=0 ; i<3; i++){    
-            Justin.deplaceLibre();
-            Alexandre.deplaceLibre();
-        }
-        Justin.affiche();
-        Alexandre.affiche();
-        
 	System.out.println("\nCréation du monde");
         World Centrale = new World();
         Centrale.creerMondeAlea(100);
@@ -39,21 +27,7 @@ public class TestWoE {
 	System.out.println();
 	Centrale.tourDeJeu();
 	Centrale.afficheWorld();
-        
-	
-	/*System.out.println("");
-        System.out.println("\nPositions intitiales");
-        Centrale.robin.affiche();
-        Centrale.peon.affiche();
-        Centrale.bugs0.affiche();
-        Centrale.bugs1.affiche();
-	
-	System.out.println("\nTour de jeu pour tester la fonction deplace()");
-	Centrale.tourDeJeu();
-	Centrale.robin.affiche();
-        Centrale.peon.affiche();
-        Centrale.bugs0.affiche();
-        Centrale.bugs1.affiche();*/
+
 	
         
 	
