@@ -186,7 +186,7 @@ public class World {
     /**
      * Affiche chaque creature du monde
      */
-    public void aficheWorld() {
+    public void afficheWorld() {
 	for (Creature c : list_creature) {
 	    c.affiche();
 	}

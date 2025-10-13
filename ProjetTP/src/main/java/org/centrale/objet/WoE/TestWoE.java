@@ -34,11 +34,11 @@ public class TestWoE {
         World Centrale = new World();
         Centrale.creerMondeAlea(100);
 	
-	Centrale.aficheWorld();
+	Centrale.afficheWorld();
 	
 	System.out.println();
 	Centrale.tourDeJeu();
-	Centrale.aficheWorld();
+	Centrale.afficheWorld();
         
 	
 	/*System.out.println("");
@@ -296,7 +296,7 @@ public class TestWoE {
         boolean continuer = true;
         while (continuer) {
             System.out.println("\n--- Tour du joueur ---");
-            Monde.aficheWorld();
+            Monde.afficheWorld();
             
             joueur.afficherInventaire();
 
