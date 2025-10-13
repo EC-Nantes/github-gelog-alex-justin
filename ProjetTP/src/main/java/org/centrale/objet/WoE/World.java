@@ -213,4 +213,18 @@ public class World {
 	// Si aucune restriction n'a été enfrein, la position est validée
 	return true;
     }
+        
+    public Creature trouverCreatureParClasse(String nomClasse) {
+        nomClasse = nomClasse.toLowerCase(); // pour ignorer la casse
+
+        for (Creature c : list_creature) {
+            if (c.getPtVie() > 0) { // ignorer les morts
+                String classeC = c.getClass().getSimpleName().toLowerCase();
+                if (classeC.equals(nomClasse)) {
+                    return c; // renvoie la première créature correspondante
+                }
+            }
+        }
+        return null; // aucune trouvée
+    }
 }
