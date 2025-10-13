@@ -8,7 +8,7 @@ package org.centrale.objet.WoE;
  * Classe représentant la nourriture, pouvant servir de Bonus oou de Malus en fonction de ce que l'on consomme
  * @author jujus
  */
-public class Nourriture extends Objet {
+public class Nourriture extends Objet implements Utilisable {
     private String statCible; //La stat qui va êytre modifiée par la nourriture
     private int intensite; //Quantifie le changement de stat (Négatif si c'est un malus)
     private int dureeEffet; //Nombre de tours que va durer l'effet
@@ -129,6 +129,7 @@ public class Nourriture extends Objet {
      * méthode d'utilisation de la nourritre
      * @param cible la créature qui bénéficie des effets
      */
+    @Override
     public void utilisation(Creature cible){
         if (dureeEffet < 1){
             System.out.println("L'objet ne peut plus être utilisé");

@@ -8,7 +8,7 @@ package org.centrale.objet.WoE;
  * Potion de régénération
  * @author Catherine
  */
-public class PotionSoin extends Objet {
+public class PotionSoin extends Objet implements Utilisable {
     private int ptRegen;
     
     /**
@@ -35,6 +35,7 @@ public class PotionSoin extends Objet {
      * Régénère le personnage
      * @param c La créature à régénérer
      */
+    @Override
     public void utilisation(Creature c) {
 	if (ptRegen == 0) return;
 	c.setPtVie(c.getPtVie() + ptRegen);
