@@ -46,17 +46,17 @@ public class World {
     /**
      * Taille du monde carré
      */
-    static public final int world_size = 50;
+    public final int world_size = 50;
     
     /**
      * Liste des créatures du monde
      */
-    static public List<Creature> list_creature;
+    public List<Creature> list_creature;
     
     /**
      * Liste des objets du monde
      */
-    static public List<Objet> list_objet;
+    public List<Objet> list_objet;
     
     /**
      * Constructeur du monde pour créer les instances de classe
@@ -142,13 +142,15 @@ public class World {
 
 	// Création d'une répartition aléatoire de différents type de créature
 	int[] nb = new int[6];
-	int s = 0;	
-	for (int i = 0; i < 5; i++) {
-	    int a = rand.nextInt(n-s);
-	    s += a;
-	    nb[i] = a;
-	}
-	nb[5] = n - s;
+	int s = 0;
+        if (n != 0) {
+            for (int i = 0; i < 5; i++) {
+                int a = rand.nextInt(n-s);
+                s += a;
+                nb[i] = a;
+            }
+            nb[5] = n - s;
+        }
 	
 	// Création des différentes créatures
 	for (int i = 0; i < nb[0]; i++) list_creature.add(new Archer());
@@ -177,7 +179,7 @@ public class World {
 	bugs1.deplaceLibre();
 	wolfie.deplaceLibre();
 	
-	for (Creature c : list_creature) c.deplace();
+	for (Creature c : list_creature) c.deplace(this);
 	
     }
     
@@ -195,7 +197,7 @@ public class World {
      * @param pos
      * @return 
      */
-    static public boolean validPos(Point2D pos) {
+    public boolean validPos(Point2D pos) {
 	// Pour ne pas allez hors de la zone de jeu
 	if (pos.getX() < 0 || pos.getX() >= world_size) return false;
 	if (pos.getY() < 0 || pos.getY() >= world_size) return false;
@@ -205,7 +207,7 @@ public class World {
 	
 	// Pour ne pas se placer sur un autre mob
 	for (Creature c : list_creature) {
-	    if (c.getPos() == pos) return false;
+	    if (c.getPos().equals(pos)) return false;
 	}
 	
 	

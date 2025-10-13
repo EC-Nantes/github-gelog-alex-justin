@@ -5,6 +5,7 @@
 package org.centrale.objet.WoE;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.LinkedList;
 
 /**
@@ -236,6 +237,77 @@ public class TestWoE {
 	
 	
 	
+    }
+    
+    /**
+     * Méthode pour tester les fonctionnalités du joueur
+     */
+    public void testJoueur() {
+        Scanner scanner = new Scanner(System.in);
+
+        // --- Création d'un monde simple ---
+        World Monde = new World();
+
+        // Création de quelques créatures ennemies
+        Archer ennemi1 = new Archer();
+        ennemi1.setNom("EnnemiArcher");
+        ennemi1.setPos(new Point2D(2, 2));
+        ennemi1.setPtVie(50);
+
+        Guerrier ennemi2 = new Guerrier();
+        ennemi2.setNom("EnnemiGuerrier");
+        ennemi2.setPos(new Point2D(3, 3));
+        ennemi2.setPtVie(80);
+
+        ennemi1.affiche();
+        ennemi2.affiche();
+             
+        Monde.creerMondeAlea(0);
+        
+        Monde.list_creature.add(ennemi1);
+        Monde.list_creature.add(ennemi2);
+
+        // --- Création du joueur ---
+        System.out.print("Nom du joueur : ");
+        String nomJoueur = scanner.nextLine();
+
+        Joueur joueur = new Joueur();
+        
+        joueur.setNomJoueur(nomJoueur);
+        
+        System.out.print("Choisissez votre classe (Archer/Guerrier) : ");
+        String nomClasse = scanner.nextLine();
+
+        System.out.print("Nom du personnage : ");
+        String nomPerso = scanner.nextLine();
+
+        if (!joueur.choisirPersonnage(nomClasse, nomPerso)) {
+            System.out.println("Classe invalide, programme terminé.");
+            return;
+        }
+        
+        Monde.list_creature.add(joueur.perso);
+
+        // Ajout d'objets dans l’inventaire pour tester
+        joueur.ajouterObjet(new PotionSoin());
+        joueur.ajouterObjet(new Epee());
+
+        // --- Boucle de test simple ---
+        boolean continuer = true;
+        while (continuer) {
+            System.out.println("\n--- Tour du joueur ---");
+            Monde.aficheWorld();
+            
+            joueur.afficherInventaire();
+
+            joueur.jouerTour(Monde);
+
+            System.out.print("Voulez-vous continuer ? (O/N) : ");
+            String rep = scanner.nextLine().trim().toLowerCase();
+            if (rep.equals("n")) continuer = false;
+        }
+
+        scanner.close();
     }
     
 }

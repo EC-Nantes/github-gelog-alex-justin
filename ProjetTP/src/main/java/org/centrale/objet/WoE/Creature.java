@@ -5,7 +5,6 @@
 package org.centrale.objet.WoE;
 
 import java.util.Random;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -82,8 +81,9 @@ public class Creature {
     
     /**
      * Déplace un mob sans altercation avec un autre mob ou un élément du jeu non fusionnable
+     * @param w LE monde dans lequel on se déplace
      */
-    public void deplace() {
+    public void deplace(World w) {
 	Random rand = new Random();
 	
 	LinkedList<Point2D> temp = new LinkedList<>(); // Liste ayant toutes les positions
@@ -118,7 +118,7 @@ public class Creature {
 	
 	// Test des déplacements dans le monde
 	for (Point2D p : move) {
-	    if (World.validPos(p)) {
+	    if (w.validPos(p)) {
 		pos = p;
 		break;
 	    }

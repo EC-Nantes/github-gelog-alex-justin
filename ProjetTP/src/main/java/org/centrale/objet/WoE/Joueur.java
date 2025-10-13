@@ -4,6 +4,7 @@
  */
 package org.centrale.objet.WoE;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * La classe Joueur est la classe servant à un joueur humain d'avoir un personnage jouable
@@ -12,15 +13,29 @@ import java.util.Scanner;
 public class Joueur {
     public Personnage perso; // personnage du joueur
     private String nomJoueur; // Nom du joueur
+    private ArrayList<Objet> inventaire;
+    
+    /**
+     * Constructeur complet du joueur
+     * @param perso le personnage
+     * @param nomj son nom
+     * @param items son inventaire de base
+     */
+    public Joueur(Personnage perso, String nomj, ArrayList<Objet> items){
+        this.perso = perso;
+        this.nomJoueur = nomj;
+        this.inventaire = items;
+    }
 
     /**
-     * Constructeur complet de la classe joueur
+     * Constructeur quasi-complet de la classe joueur
      * @param perso Le personnage du joueur
      * @param nomj Le nom du joueur
      */
     public Joueur(Personnage perso, String nomj) {
         this.perso = perso;
         this.nomJoueur = nomj;
+        this.inventaire = new ArrayList<>();
     }
     
     /**
@@ -29,6 +44,7 @@ public class Joueur {
     public Joueur() {
         this.perso = new Personnage();
         this.nomJoueur = "J1";
+        this.inventaire = new ArrayList<>();
     }
     
     /**
@@ -38,6 +54,7 @@ public class Joueur {
     public Joueur(Joueur J){
         this.perso = J.perso;
         this.nomJoueur = J.nomJoueur;
+        this.inventaire = J.inventaire;
     }
     
     /**
@@ -139,16 +156,93 @@ public class Joueur {
                 int dx = scanner.nextInt();
                 System.out.print("Déplacement en y (-1, 0, 1) : ");
                 int dy = scanner.nextInt();
-                deplace(dx, dy);
+                Point2D move = new Point2D(perso.getPos());
+                move.translate(dx, dy);
+                
+                move.affiche();
+                
+                //Testons si la position est valide
+                if (monde.validPos(move)){
+                    deplace(dx, dy);
+                } else {
+                    System.out.println("Position Invalide");
+                }
+                
                 break;
             case 2:
+                System.out.println(nomJoueur + " choisit de combattre");
+                System.out.print("Choix de la créature à affronter :");
+                String nomClasse = scanner.next();
                 
-                perso.combattre(monde);
-                break;
-            default:
-                System.out.println("Choix invalide !");
+                // On cherche la créature dans le monde par son nom
+                Creature cible = monde.trouverCreatureParClasse(nomClasse);
+
+                if (cible == null) {
+                    System.out.println("Aucune créature de type " + nomClasse + " n'a été trouvée !");
+                } else {
+                    String classePerso = perso.getClass().getSimpleName();
+                    if (classePerso.equals("Archer")){
+                        ((Archer)perso).combattre(cible);
+                    } else if (classePerso.equals("Guerrier")){
+                        ((Guerrier)perso).combattre(cible);
+                    } else {
+                        System.out.print("Erreur de recherche de classe");
+                    }
+                }
                 break;
         }
     }
+    
+    /**
+     * Méthode pour ajouter un objet dans l'inventaire du Joueur
+     * @param o l'objet ajouté
+     */
+    public void ajouterObjet(Objet o) {
+        inventaire.add(o);
+        System.out.println(o.getNom() + " ajouté à l’inventaire !");
+    }
+
+    /**
+     * Méthode pour retirer un objet de l'inventaire du joueur
+     * @param o l'objet retiré
+     */
+    public void retirerObjet(Objet o) {
+        if (inventaire.remove(o))
+            System.out.println(o.getNom() + " retiré de l’inventaire !");
+        else
+            System.out.println("Objet introuvable dans l’inventaire.");
+    }
+
+    /**
+     * Méthode pour afficher l'inventaire du joueur
+     */
+    public void afficherInventaire() {
+        if (inventaire.isEmpty()) {
+            System.out.println("L’inventaire est vide.");
+        } else {
+            System.out.println("Inventaire de " + nomJoueur + " :");
+            for (Objet o : inventaire) {
+                System.out.println(" - " + o.getNom());
+            }
+        }
+    }
+
+    /**
+     * getteur de l'inventaire du joueur
+     * @return l'inventaire
+     */
+    public ArrayList<Objet> getInventaire() {
+        return inventaire;
+    }
+
+    /**
+     * Setteur de l'inventaire du joueur
+     * @param inventaire l'inventaire à mettre au joueur
+     */
+    public void setInventaire(ArrayList<Objet> inventaire) {
+        this.inventaire = inventaire;
+    }
+    
+    
 }
     
