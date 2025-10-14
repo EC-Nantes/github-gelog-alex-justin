@@ -32,6 +32,16 @@ public class PotionSoin extends Objet implements Utilisable {
     }
     
     /**
+     * Constructeur de Potion à partir du nom et des pt de vie
+     * @param nom le nom de la potion
+     * @param ptV le nombre de pt de vie régénéré
+     */
+    public PotionSoin(String nom, int ptV){
+        super(nom);
+        ptRegen = ptV;
+    }
+    
+    /**
      * Régénère le personnage
      * @param c La créature à régénérer
      */

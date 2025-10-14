@@ -16,13 +16,22 @@ public class Objet extends ElementDeJeu{
     private String nom;
     
     /**
-     * Constructure définissant le nom de l'objet
+     * Constructure définissant le nom de l'objet et sa position
      * @param nom nom de l'objet créé
      * @param pos la position de l'objet
      */
     public Objet(String nom, Point2D pos) {
         super(pos);
 	this.nom = nom; 
+    }
+    
+    /**
+     * Constructeur d'objets à partir du nom
+     * @param nom nom de l'objet créé
+     */
+    public Objet(String nom){
+        super();
+        this.nom = nom;
     }
     
     /**

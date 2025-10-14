@@ -23,8 +23,7 @@ public class Epee extends Objet {
     }
     
     /**
-     * Constructeur pour spécifier les dégats
-     * 
+     * Constructeur pour spécifier les dégats et la position
      * @param nom nom de l'épée
      * @param ptA Nombre de dégats
      * @param pos position de l'objet
@@ -33,6 +32,18 @@ public class Epee extends Objet {
         super(nom, pos);
         ptAttaque = ptA;
         ptDurabilite = 100;
+    }
+    
+    /**
+     * Constructeur de l'épée à partir du nom et des stats
+     * @param nom le nom de l'épée
+     * @param ptA les points d'attaques de l'épée
+     * @param ptD la durbabilité de l'épée
+     */
+    public Epee(String nom, int ptA, int ptD) {
+        super(nom);
+        ptAttaque = ptA;
+        ptDurabilite = ptD;
     }
     
     /**

@@ -193,12 +193,12 @@ public class Sauvegarde {
 			if (tokenizer.countTokens() != 4) break;
 			name = tokenizer.nextToken();
 			args[0] = Integer.parseInt(tokenizer.nextToken());
-			
+			pos = new Point2D(args[2], args[3]);
+                        
 			if (inventaire) {
 			    for (int  i = 1; i < 3; i++) {
 				args[i] = Integer.parseInt(tokenizer.nextToken());
 			    }
-			    pos = new Point2D(args[2], args[3]);
 			}
 			
 			PotionSoin po;
@@ -219,12 +219,12 @@ public class Sauvegarde {
 			for (int  i = 0; i < 2; i++) {
 			    args[i] = Integer.parseInt(tokenizer.nextToken());
 			}
+                        pos = new Point2D(args[3], args[4]);
 			
 			if (inventaire) {
 			    for (int  i = 2; i < 4; i++) {
 				args[i] = Integer.parseInt(tokenizer.nextToken());
 			    }
-			    pos = new Point2D(args[3], args[4]);
 			}
 
 			Epee sw;
