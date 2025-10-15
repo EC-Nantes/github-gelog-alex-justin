@@ -7,7 +7,6 @@ package org.centrale.objet.WoE;
 import java.io.*;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 /**
  * Classe permettant de gérer les sauvegardes de joueurs
@@ -40,16 +39,19 @@ public class Sauvegarde {
      * @param j Le personnage à charger
      * @return Vrai si le chargement s'est bien effectué
      */
-    public boolean loadWorld(String filename, World w, Joueur j) {
+    public boolean loadWorld(String filename, World w, Joueur j) throws IOException {
+	BufferedReader file = null;
 	try {
 	    String line;
-	    BufferedReader file = new BufferedReader(new FileReader(filename));
+	    file = new BufferedReader(new FileReader(filename));
 	    
 	    // Initialisation des variables
 	    largeur = -1;
 	    longueur = -1;
 	    list_creature.clear();
 	    list_objet.clear();
+	    list_objet_inventaire.clear();
+	    nom_joueur = "Joueur";
 	    
 	    // Constitution du jeu
 	    line = file.readLine();
@@ -58,7 +60,6 @@ public class Sauvegarde {
 		line = file.readLine();
 		
 	    }
-	    file.close();
 	    
 	    if (largeur == -1 || longueur == -1) {
 		return false;
@@ -80,10 +81,13 @@ public class Sauvegarde {
 	    // Destruction des objets
 	    list_creature.clear();
 	    list_objet.clear();
+	    list_objet_inventaire.clear();
 	    
 	} catch(Exception e) {
 	    e.printStackTrace();
 	    System.out.println("Erreur lors de la lecture de la sauvegarde");
+	} finally {
+	    if (file != null) file.close();
 	}
 	
 	return true;
@@ -97,7 +101,33 @@ public class Sauvegarde {
      * @return Vrai si l'enregistrement s'est bien effectué
      */
     public boolean saveWorld(String filename, World w, Joueur j) {
-	return false;
+	list_creature = new ArrayList(w.getList_creature());
+	list_objet = new ArrayList(w.getList_objet());
+	list_objet_inventaire = new ArrayList(j.getInventaire());
+	
+	BufferedWriter file = null;
+	
+	try {
+	    file = new BufferedWriter(new FileWriter(filename));
+	    
+	} catch (FileNotFoundException ex) {
+	    ex.printStackTrace();
+	} catch (IOException ex) {
+	    ex.printStackTrace();
+	} finally {
+	    try {
+		if (file != null) {
+		    file.flush();
+		    file.close();
+		}
+	    } catch (IOException ex) {
+		ex.printStackTrace();
+	    }
+	}
+	
+	
+	
+	return true;
     }
     
     
@@ -119,8 +149,9 @@ public class Sauvegarde {
 	    try {
 		if (element.equals("Inventaire")) {
 		    element = tokenizer.nextToken();
-		    inventaire = false;
+		    inventaire = true;
 		}
+		
 		switch (element) {
 		    case "Joueur":
 			temp = tokenizer.nextToken();
@@ -226,7 +257,8 @@ public class Sauvegarde {
 			break;
 
 		    case "PotionSoin":
-			if (tokenizer.countTokens() != 4) break;
+			if (tokenizer.countTokens() != 4 && !inventaire) break;
+			if (tokenizer.countTokens() != 2 && inventaire) break;
 			name = tokenizer.nextToken();
 			args[0] = Integer.parseInt(tokenizer.nextToken());
 			
@@ -248,7 +280,8 @@ public class Sauvegarde {
 			break;
 
 		    case "Epee":
-			if (tokenizer.countTokens() != 5) break;
+			if (tokenizer.countTokens() != 5 && !inventaire) break;
+			if (tokenizer.countTokens() != 3 && inventaire) break;
 			name = tokenizer.nextToken();
 			for (int  i = 0; i < 2; i++) {
 			    args[i] = Integer.parseInt(tokenizer.nextToken());
@@ -270,7 +303,8 @@ public class Sauvegarde {
 			break;
 		
 		    case "Nourriture":
-			if (tokenizer.countTokens() != 6) break;
+			if (tokenizer.countTokens() != 6 && !inventaire) break;
+			if (tokenizer.countTokens() != 4 && inventaire) break;
 			name = tokenizer.nextToken();
 			temp = tokenizer.nextToken();
 			
