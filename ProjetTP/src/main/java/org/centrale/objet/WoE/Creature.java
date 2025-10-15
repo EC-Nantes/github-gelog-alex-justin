@@ -4,8 +4,7 @@
  */
 package org.centrale.objet.WoE;
 
-import java.util.Random;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * La classe qui représente tous les "êtres" de WoE
@@ -18,9 +17,30 @@ public class Creature extends ElementDeJeu implements Deplacable {
     private int ptPar;
     private int pageAtt;
     private int pagePar;
+    private List<Utilisable> effets;
+    
+    /**
+     * Constructeur quasi-complet de la classe Créature
+     * @param pV Nombre de points de vie du personnage
+     * @param dA Nombre de dégâts que le personnage inflige en cas d'attaque réussie
+     * @param pPar Nombre de dégâts que le personnage peut parer en cas de parade réussie
+     * @param paAtt Pourcentage de chance de réussite d'une attaque (entre 0 et 100)
+     * @param paPar Pourcentage de chance de réussite d'une parade (entre 0 et 100)
+     * @param eff Les effets qui s'appliquent à la créature
+     * @param pos position de la Créature
+     */
+    public Creature(int pV, int dA, int pPar, int paAtt, int paPar, List<Utilisable> eff, Point2D pos) {
+	super(pos);
+        ptVie = pV;
+	degAtt = dA;
+	ptPar = pPar;
+	pageAtt = paAtt;
+	pagePar = paPar;
+        this.effets = eff;
+    }
 
     /**
-     * Constructeur de la classe Créature
+     * Constructeur quasi-complet de la classe Créature
      * @param pV Nombre de points de vie du personnage
      * @param dA Nombre de dégâts que le personnage inflige en cas d'attaque réussie
      * @param pPar Nombre de dégâts que le personnage peut parer en cas de parade réussie
@@ -35,6 +55,7 @@ public class Creature extends ElementDeJeu implements Deplacable {
 	ptPar = pPar;
 	pageAtt = paAtt;
 	pagePar = paPar;
+        this.effets = new ArrayList<>();
     }
     
     /**
@@ -48,6 +69,7 @@ public class Creature extends ElementDeJeu implements Deplacable {
 	this.ptPar = c.ptPar;
 	this.pageAtt = c.pageAtt;
 	this.pagePar = c.pagePar;
+        this.effets = c.effets;
     }
     
     /**
@@ -60,6 +82,7 @@ public class Creature extends ElementDeJeu implements Deplacable {
 	ptPar = 10;
 	pageAtt = 10;
 	pagePar = 10;
+        this.effets = new ArrayList<>();
     }
     
     /**
@@ -217,5 +240,88 @@ public class Creature extends ElementDeJeu implements Deplacable {
     public void setPagePar(int pagePar) {
 	this.pagePar = pagePar;
     }
+
+    /**
+     * Getteur des effets qui s'appliquent au personnage
+     * @return les effets
+     */
+    public List<Utilisable> getEffets() {
+        return effets;
+    }
+
+    /**
+     * Setteur des effets qui s'appliquent au personnage
+     * @param effets les nouveaux effets
+     */
+    public void setEffets(List<Utilisable> effets) {
+        this.effets = effets;
+    }
     
+    /**
+     * Méthode pour mettre à jour les effets sur la créature
+     */
+     public void majEffets() {
+        for (int i = 0; i < effets.size(); i++) {
+            Utilisable effet = effets.get(i);
+
+            if (effet instanceof Nourriture n) {
+                n.decrementerDuree(this);
+
+                if (n.getDureeEffet() <= 0) {
+                    effets.remove(i);
+                    i--; // important car on retire pendant la boucle
+                }
+            } else if (effet instanceof Epee e) {
+                e.decrementerDurabilite((Guerrier)this);
+
+                if (e.getPtDurabilite() <= 0) {
+                    effets.remove(i);
+                    i--;
+                }
+            }
+        }
+    }
+     
+    /**
+     * Méthode pourn utiliser un objet correctement
+     * @param objet l'objet utilisé
+     */
+    public void UtiliserObjet(Utilisable objet) {
+        objet.utilisation(this); // applique l’effet
+
+        // Si c’est une Nourriture ou une Epee, on garde l’effet dans la liste
+        if (objet instanceof Nourriture || objet instanceof Epee) {
+            effets.add(objet);
+        }
+    }
+    
+    /**
+    * Affiche les effets actuellement actifs sur la créature.
+    */
+    public void afficherEffets() {
+        if (!(this instanceof Personnage)){
+        } else {
+            if (effets == null || effets.isEmpty()) {
+                System.out.println(((Personnage)this).getNom() + " n’a actuellement aucun effet actif.");
+                return;
+            }
+
+            System.out.println("Effets actifs sur " + ((Personnage)this).getNom() + " :");
+            
+            for (int i = 0; i < effets.size(); i++) {
+                Utilisable effet = effets.get(i);
+
+                if (effet instanceof Nourriture n) {
+                    System.out.print("- Effet de " + ((Nourriture)effet).getNom());
+                    System.out.print("\u001B[33m"+ "| Statistique affectée : " + ((Nourriture)effet).getStatCible() +"\u001B[0m");
+                    System.out.print("\u001B[31m"+" | Intensité : " + ((Nourriture)effet).getIntensite()+"\u001B[0m");
+                    System.out.println("\u001B[34m"+" | Durée Restante : " + ((Nourriture)effet).getDureeEffet()+" tours"+"\u001B[0m");
+                } else if (effet instanceof Epee e) {
+                    System.out.print("- Effet de " + ((Epee)effet).getNom());
+                    System.out.print("\u001B[31m"+" | Puissance : " + ((Epee)effet).getPtAttaque()+"\u001B[0m");
+                    System.out.println("\u001B[34m"+" | Durabilité : " + ((Epee)effet).getPtDurabilite()+"\u001B[0m");
+                } 
+            }
+        }
+    }
 }
