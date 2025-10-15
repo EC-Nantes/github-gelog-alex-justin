@@ -18,7 +18,8 @@ public class Sauvegarde {
     private ArrayList<Creature> list_creature;
     private ArrayList<Objet> list_objet;
     private ArrayList<Objet> list_objet_inventaire;
-    private Joueur j;
+    private String nom_joueur;
+    private Personnage perso_joueur;
     private int largeur;
     private int longueur;
     
@@ -49,7 +50,6 @@ public class Sauvegarde {
 	    longueur = -1;
 	    list_creature.clear();
 	    list_objet.clear();
-	    this.j = new Joueur();
 	    
 	    // Constitution du jeu
 	    line = file.readLine();
@@ -63,14 +63,18 @@ public class Sauvegarde {
 	    if (largeur == -1 || longueur == -1) {
 		return false;
 	    }
-	    
+	    	    
 	    // Copie des éléments du monde
-	    this.j.setInventaire(new ArrayList(list_objet_inventaire));
-	    j = new Joueur(this.j);
-	    w = new World(largeur, longueur);
-	    w.list_creature = new ArrayList(list_creature);
-	    w.list_objet = new ArrayList(list_objet);
-	    w.setJ(this.j);
+	    j.setInventaire(new ArrayList(list_objet_inventaire));
+	    j.setPerso(perso_joueur);
+	    j.setNomJoueur(nom_joueur);
+	    
+	    
+	    w.setWorld_max_x(largeur);
+	    w.setWorld_max_y(longueur);
+	    w.setList_creature(new ArrayList(list_creature));
+	    w.setList_objet(new ArrayList(list_objet));
+	    w.setJ(j);
 	    
 	    
 	    // Destruction des objets
@@ -79,6 +83,7 @@ public class Sauvegarde {
 	    
 	} catch(Exception e) {
 	    e.printStackTrace();
+	    System.out.println("Erreur lors de la lecture de la sauvegarde");
 	}
 	
 	return true;
@@ -120,7 +125,7 @@ public class Sauvegarde {
 		    case "Joueur":
 			temp = tokenizer.nextToken();
 			name = tokenizer.nextToken();
-			j.setNomJoueur(name);
+			nom_joueur = name;
 			
 			if (temp.equals("Guerrier") && tokenizer.countTokens() == 10) {
 			    for (int  i = 0; i < 10; i++) {
@@ -129,7 +134,7 @@ public class Sauvegarde {
 
 			    pos = new Point2D(args[8], args[9]);
 			    Guerrier g = new Guerrier(name, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], pos);
-			    j.setPerso(g);
+			    perso_joueur = (Personnage)g;
 			} else if (temp.equals("Archer") && tokenizer.countTokens() == 9) {
 			    for (int  i = 0; i < 9; i++) {
 				args[i] = Integer.parseInt(tokenizer.nextToken());
@@ -137,7 +142,7 @@ public class Sauvegarde {
 
 			    pos = new Point2D(args[6], args[7]);
 			    Archer a = new Archer(name, args[0], args[1], args[2], args[3], args[4], args[5], pos, args[8]);
-			    j.setPerso(a);
+			    perso_joueur = (Personnage)a;
 			}
 			
 			break;
