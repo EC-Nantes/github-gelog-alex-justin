@@ -18,15 +18,17 @@ public class TestWoE {
      * le vrai main
      */
     public void main(){
-	System.out.println("\nCréation du monde");
-        World Centrale = new World();
-        Centrale.creerMondeAlea(100);
+        this.TestInventaire();
+        
+	//System.out.println("\nCréation du monde");
+        //World Centrale = new World();
+        //Centrale.creerMondeAlea(100);
 	
-	Centrale.afficheWorld();
+	//Centrale.afficheWorld();
 	
-	System.out.println();
-	Centrale.tourDeJeu();
-	Centrale.afficheWorld();
+	//System.out.println();
+	//Centrale.tourDeJeu();
+	//Centrale.afficheWorld();
 
 	
         
@@ -284,4 +286,53 @@ public class TestWoE {
         scanner.close();
     }
     
+    public void TestInventaire() {
+        // --- Création du joueur et de son personnage ---
+        Joueur joueur = new Joueur();
+        joueur.setNomJoueur("Justin");
+        Personnage a = new Archer(10, "Robin", 100, 15, 10, 80, 60, 5, new Point2D(0, 0));
+        joueur.setPerso(a);
+        joueur.perso.affiche();
+
+        // --- Création d'objets utilisables ---
+        Nourriture pomme = new Nourriture("Pomme dorée", 5, 4, "degAtt");
+        PotionSoin potion = new PotionSoin("Potion de soin", 30);
+        Epee epee = new Epee("Épée de fer", 10, 3);
+        Nourriture viande = new Nourriture("Viande épicée", 3, 2, "ptPar");
+        Nourriture PJ = new Nourriture("Potion de Jouvence", 1, 10000, "pv");
+
+        // --- Ajout à l’inventaire ---
+        joueur.getInventaire().add(pomme);
+        joueur.getInventaire().add(potion);
+        joueur.getInventaire().add(epee);
+        joueur.getInventaire().add(viande);
+        joueur.getInventaire().add(PJ);
+
+        // --- Affichage initial ---
+        System.out.println("=== Inventaire initial ===");
+        joueur.afficherInventaire();
+
+        // --- Utilisation d’un objet ---
+        System.out.println("\n=== Utilisation d’un objet ===");
+
+        // --- Inventaire après utilisation ---
+        System.out.println("\n=== Inventaire après utilisation ===");
+        joueur.afficherInventaire();
+
+        // --- Simulation de quelques tours pour voir les effets temporaires ---
+        for (int tour = 1; tour <= 4; tour++) {
+            System.out.println("\n=== Tour " + tour + " ===");
+            joueur.getPerso().majEffets();
+            System.out.println("PV : " + a.getPtVie() + ", Attaque : " + a.getDegAtt() + ", Parade : " + a.getPtPar());
+            joueur.utiliserInventaire(); // interaction avec choix utilisateur
+        }
+
+        // --- Résumé final ---
+        System.out.println("\n=== État final de " + a.getNom() + " ===");
+        System.out.println("PV : " + a.getPtVie());
+        System.out.println("Attaque : " + a.getDegAtt());
+        System.out.println("Parade : " + a.getPtPar());
+        System.out.println("Effets restants : " + a.getEffets().size());
+        joueur.getPerso().afficherEffets();
+    }
 }
