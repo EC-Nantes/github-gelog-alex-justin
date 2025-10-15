@@ -6,7 +6,7 @@ package org.centrale.objet.WoE;
 
 import java.io.*;
 import java.util.StringTokenizer;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  * Classe permettant de gérer les sauvegardes de joueurs
@@ -14,9 +14,10 @@ import java.util.LinkedList;
  */
 public class Sauvegarde {
     private final String delimiteurs = " ,;";
-    private LinkedList<Creature> list_creature;
-    private LinkedList<Objet> list_objet;
-    private LinkedList<Objet> list_objet_inventaire;
+    private ArrayList<Creature> list_creature;
+    private ArrayList<Objet> list_objet;
+    private ArrayList<Objet> list_objet_inventaire;
+    private Joueur j;
     private int largeur;
     private int longueur;
     
@@ -24,9 +25,9 @@ public class Sauvegarde {
      * Constructeur pour avoir créer et charger une sauvegarde
      */
     public Sauvegarde() {
-	list_creature = new LinkedList<>();
-	list_objet = new LinkedList<>();
-	list_objet_inventaire = new LinkedList<>();
+	list_creature = new ArrayList<>();
+	list_objet = new ArrayList<>();
+	list_objet_inventaire = new ArrayList<>();
     }
     
     /**
@@ -47,6 +48,7 @@ public class Sauvegarde {
 	    longueur = -1;
 	    list_creature.clear();
 	    list_objet.clear();
+	    this.j = new Joueur();
 	    
 	    // Constitution du jeu
 	    line = file.readLine();
@@ -62,9 +64,12 @@ public class Sauvegarde {
 	    }
 	    
 	    // Copie des éléments du monde
+	    this.j.setInventaire(new ArrayList(list_objet_inventaire));
+	    j = new Joueur(this.j);
 	    w = new World(largeur, longueur);
-	    w.list_creature = new LinkedList(list_creature);
-	    w.list_objet = new LinkedList(list_objet);
+	    w.list_creature = new ArrayList(list_creature);
+	    w.list_objet = new ArrayList(list_objet);
+	    
 	    
 	    // Destruction des objets
 	    list_creature.clear();
@@ -98,9 +103,9 @@ public class Sauvegarde {
 	if (tokenizer.countTokens() > 1) {
 	    String element = tokenizer.nextToken();
 	    
-	    String name = "";
-	    String temp = "";
-	    int[] args = new int[9];
+	    String name;
+	    String temp;
+	    int[] args = new int[10];
 	    Point2D pos;
 	    boolean inventaire = false;
 		    
@@ -110,6 +115,30 @@ public class Sauvegarde {
 		    inventaire = false;
 		}
 		switch (element) {
+		    case "Joueur":
+			temp = tokenizer.nextToken();
+			name = tokenizer.nextToken();
+			j.setNomJoueur(name);
+			
+			if (temp.equals("Guerrier") && tokenizer.countTokens() == 10) {
+			    for (int  i = 0; i < 10; i++) {
+				args[i] = Integer.parseInt(tokenizer.nextToken());
+			    }
+
+			    pos = new Point2D(args[8], args[9]);
+			    Guerrier g = new Guerrier(name, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], pos);
+			    j.setPerso(g);
+			} else if (temp.equals("Archer") && tokenizer.countTokens() == 9) {
+			    for (int  i = 0; i < 9; i++) {
+				args[i] = Integer.parseInt(tokenizer.nextToken());
+			    }
+
+			    pos = new Point2D(args[6], args[7]);
+			    Archer a = new Archer(name, args[0], args[1], args[2], args[3], args[4], args[5], pos, args[8]);
+			    j.setPerso(a);
+			}
+			
+			break;
 		    case "Largeur":
 			if (tokenizer.countTokens() != 1) break;
 			largeur = Integer.parseInt(tokenizer.nextToken());
@@ -121,14 +150,14 @@ public class Sauvegarde {
 			break;
 			
 		    case "Guerrier":
-			if (tokenizer.countTokens() != 9) break;
+			if (tokenizer.countTokens() != 11) break;
 			name = tokenizer.nextToken();
-			for (int  i = 0; i < 8; i++) {
+			for (int  i = 0; i < 10; i++) {
 			    args[i] = Integer.parseInt(tokenizer.nextToken());
 			}
 
-			pos = new Point2D(args[6], args[7]);
-			Guerrier g = new Guerrier(name, args[0], args[1], args[2], args[3], args[4], args[5], pos);
+			pos = new Point2D(args[8], args[9]);
+			Guerrier g = new Guerrier(name, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], pos);
 			list_creature.add(g);
 			break;
 			
@@ -200,11 +229,11 @@ public class Sauvegarde {
 				args[i] = Integer.parseInt(tokenizer.nextToken());
 			    }
                             
-                            pos = new Point2D(args[2], args[3]);
-			    po = new PotionSoin(name, args[1], pos);
+                            pos = new Point2D(args[1], args[2]);
+			    po = new PotionSoin(name, args[0], pos);
 			    list_objet.add(po);
 			} else {
-			    po = new PotionSoin(name, args[1]);
+			    po = new PotionSoin(name, args[0]);
 			    list_objet_inventaire.add(po);
 			}
 			
@@ -223,11 +252,11 @@ public class Sauvegarde {
                             for (int  i = 2; i < 4; i++) {
 				args[i] = Integer.parseInt(tokenizer.nextToken());
 			    }
-                            pos = new Point2D(args[3], args[4]);
-			    sw = new Epee(name, args[1], args[2], pos);
+                            pos = new Point2D(args[2], args[3]);
+			    sw = new Epee(name, args[0], args[1], pos);
 			    list_objet.add(sw);
 			} else {
-			    sw = new Epee(name, args[1], args[2]);
+			    sw = new Epee(name, args[0], args[1]);
 			    list_objet_inventaire.add(sw);
 			}
 			
@@ -247,11 +276,11 @@ public class Sauvegarde {
                             for (int  i = 2; i < 4; i++) {
 				args[i] = Integer.parseInt(tokenizer.nextToken());
 			    }
-			    pos = new Point2D(args[3], args[4]);
-			    n = new Nourriture(name, args[1], args[2], temp, pos);
+			    pos = new Point2D(args[2], args[3]);
+			    n = new Nourriture(name, args[0], args[1], temp, pos);
 			    list_objet.add(n);
 			} else {
-			    n = new Nourriture(name, args[1], args[2], temp);
+			    n = new Nourriture(name, args[0], args[2], temp);
 			    list_objet_inventaire.add(n);
 			}
 			
