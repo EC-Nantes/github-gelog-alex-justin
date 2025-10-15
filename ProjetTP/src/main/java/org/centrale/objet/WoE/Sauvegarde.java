@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 import java.util.LinkedList;
 
 /**
- *
+ * Classe permettant de gérer les sauvegardes de joueurs
  * @author Catherine
  */
 public class Sauvegarde {
@@ -193,16 +193,14 @@ public class Sauvegarde {
 			if (tokenizer.countTokens() != 4) break;
 			name = tokenizer.nextToken();
 			args[0] = Integer.parseInt(tokenizer.nextToken());
-			pos = new Point2D(args[2], args[3]);
-                        
-			if (inventaire) {
-			    for (int  i = 1; i < 3; i++) {
-				args[i] = Integer.parseInt(tokenizer.nextToken());
-			    }
-			}
 			
 			PotionSoin po;
 			if (!inventaire) {
+                            for (int  i = 1; i < 3; i++) {
+				args[i] = Integer.parseInt(tokenizer.nextToken());
+			    }
+                            
+                            pos = new Point2D(args[2], args[3]);
 			    po = new PotionSoin(name, args[1], pos);
 			    list_objet.add(po);
 			} else {
@@ -219,23 +217,19 @@ public class Sauvegarde {
 			for (int  i = 0; i < 2; i++) {
 			    args[i] = Integer.parseInt(tokenizer.nextToken());
 			}
-                        pos = new Point2D(args[3], args[4]);
-			
-			if (inventaire) {
-			    for (int  i = 2; i < 4; i++) {
-				args[i] = Integer.parseInt(tokenizer.nextToken());
-			    }
-			}
 
 			Epee sw;
 			if (!inventaire) {
+                            for (int  i = 2; i < 4; i++) {
+				args[i] = Integer.parseInt(tokenizer.nextToken());
+			    }
+                            pos = new Point2D(args[3], args[4]);
 			    sw = new Epee(name, args[1], args[2], pos);
 			    list_objet.add(sw);
 			} else {
 			    sw = new Epee(name, args[1], args[2]);
 			    list_objet_inventaire.add(sw);
 			}
-			
 			
 			break;
 		
@@ -247,20 +241,17 @@ public class Sauvegarde {
 			for (int  i = 0; i < 2; i++) {
 			    args[i] = Integer.parseInt(tokenizer.nextToken());
 			}
-			
-			if (inventaire) {
-			    for (int  i = 2; i < 4; i++) {
-				args[i] = Integer.parseInt(tokenizer.nextToken());
-			    }
-			    pos = new Point2D(args[3], args[4]);
-			}
 
 			Nourriture n;
 			if (!inventaire) {
-			    n = new Nourriture(name, temp, args[1], args[2], pos);
+                            for (int  i = 2; i < 4; i++) {
+				args[i] = Integer.parseInt(tokenizer.nextToken());
+			    }
+			    pos = new Point2D(args[3], args[4]);
+			    n = new Nourriture(name, args[1], args[2], temp, pos);
 			    list_objet.add(n);
 			} else {
-			    n = new Nourriture(name, temp, args[1], args[2]);
+			    n = new Nourriture(name, args[1], args[2], temp);
 			    list_objet_inventaire.add(n);
 			}
 			
@@ -273,6 +264,7 @@ public class Sauvegarde {
 			    args[i] = Integer.parseInt(tokenizer.nextToken());
 			}
 
+                        pos = new Point2D(args[3], args[4]);
 			NuageToxique nt = new NuageToxique(pos, args[0], args[1]);
 			list_objet.add(nt);
 			break;

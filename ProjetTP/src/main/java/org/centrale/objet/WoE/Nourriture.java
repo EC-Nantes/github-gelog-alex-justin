@@ -21,7 +21,7 @@ public class Nourriture extends Objet implements Utilisable {
      * @param nom le nom de la nourriture
      * @param pos la position de l'objet
      */
-    public Nourriture(String statCible, int intensite, int dureeEffet, String nom, Point2D pos) {
+    public Nourriture(String nom, int intensite, int dureeEffet, String statCible, Point2D pos) {
         super(nom, pos);
         this.statCible = statCible;
         this.intensite = intensite;
@@ -30,12 +30,13 @@ public class Nourriture extends Objet implements Utilisable {
 
     /**
      * Constructeur partiel de la nourriture
+     * @param nom le nom de la nourriture
      * @param statCible stat ciblée par les effets
      * @param intensite intensité des effets
      * @param dureeEffet durée des effets en tours
      */
-    public Nourriture(String statCible, int intensite, int dureeEffet) {
-        super();
+    public Nourriture(String nom, int intensite, int dureeEffet, String statCible) {
+        super(nom);
         this.statCible = statCible;
         this.intensite = intensite;
         this.dureeEffet = dureeEffet;
