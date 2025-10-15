@@ -8,7 +8,7 @@ package org.centrale.objet.WoE;
  * Classe d'une épée
  * @author Catherine
  */
-public class Epee extends Objet {
+public class Epee extends Objet implements Utilisable {
     private int ptAttaque;
     private int ptDurabilite;
     
@@ -32,6 +32,17 @@ public class Epee extends Objet {
         super(nom, pos);
         ptAttaque = ptA;
         ptDurabilite = 100;
+    }
+    
+    /**
+     * Constructeur d'épee pour le guerrier par défaut
+     * @param nom Le nom de l'épée
+     * @param ptA la quantité de dégâts
+     */
+    public Epee(String nom, int ptA) {
+        super(nom);
+        ptAttaque = ptA;
+        ptDurabilite = 100000;
     }
     
     /**
@@ -63,14 +74,19 @@ public class Epee extends Objet {
     
     /**
      * Utilisation de l'objet
-     * @param g La créature qui attaque
-     * @param c La créature attaquée
+     * @param c La créature qui prend l'épée
      */
-    public void utilisation(Guerrier g, Creature c) {
-        int degAtt_base = g.getDegAtt();
-        g.setDegAtt(degAtt_base + ptAttaque);
-        g.combattre(c);
-        g.setDegAtt(degAtt_base);
+    @Override
+    public void utilisation(Creature c) {
+        switch (c.getClass().getSimpleName().toLowerCase()){
+            case "guerrier" :
+                ((Guerrier)c).setArme(this);
+                break;
+            default :
+                System.out.println("\n Cette créature ne peut pas prendre cet objet");
+                break;
+        }
+        
     }
 
     /**
