@@ -39,7 +39,7 @@ public class Sauvegarde {
      * @param j Le personnage à charger
      * @return Vrai si le chargement s'est bien effectué
      */
-    public boolean loadWorld(String filename, World w, Joueur j) throws IOException {
+    public boolean loadWorld(String filename, World w, Joueur j) {
 	BufferedReader file = null;
 	try {
 	    String line;
@@ -60,6 +60,7 @@ public class Sauvegarde {
 		line = file.readLine();
 		
 	    }
+	    file.close();
 	    
 	    if (largeur == -1 || longueur == -1) {
 		return false;
@@ -86,8 +87,6 @@ public class Sauvegarde {
 	} catch(Exception e) {
 	    e.printStackTrace();
 	    System.out.println("Erreur lors de la lecture de la sauvegarde");
-	} finally {
-	    if (file != null) file.close();
 	}
 	
 	return true;
@@ -109,6 +108,21 @@ public class Sauvegarde {
 	
 	try {
 	    file = new BufferedWriter(new FileWriter(filename));
+	    
+	    file.write("Largeur " + w.getWorld_max_x() + "\n");
+	    file.write("Longueur " + w.getWorld_max_y() + "\n");
+	    
+	    for (Creature c : list_creature) writeCreature(file, c);
+	    file.newLine();
+	    for (Objet o : list_objet) writeObjet(file, o);
+	    file.newLine();
+	    for (Objet o : list_objet_inventaire) writeInventaire(file, o);
+	    file.newLine();
+	    
+	    String line = "Joueur ";
+	    line += j.getNomJoueur();
+	    line += " ";
+	    writeCreature(file, j.getPerso());
 	    
 	} catch (FileNotFoundException ex) {
 	    ex.printStackTrace();
@@ -133,9 +147,9 @@ public class Sauvegarde {
     
     /**
      * Ajout d'un élément de jeu dans la structure de donnée
-     * @param cmd 
+     * @param cmd
      */
-    public void ajoutElementDeJeu(String cmd) {
+    private void ajoutElementDeJeu(String cmd) {
 	StringTokenizer tokenizer = new StringTokenizer(cmd, delimiteurs);
 	if (tokenizer.countTokens() > 1) {
 	    String element = tokenizer.nextToken();
@@ -349,4 +363,18 @@ public class Sauvegarde {
 	}
     }
     
+    private void writeCreature(BufferedWriter f, Creature c) {
+	String line = c.getClass().getSimpleName();
+	line += " ";
+	line += "";
+	
+    }
+    
+    private void writeObjet(BufferedWriter f, Objet o) {
+	//
+    }
+    
+    private void writeInventaire(BufferedWriter f, Objet o) {
+	//
+    }
 }
