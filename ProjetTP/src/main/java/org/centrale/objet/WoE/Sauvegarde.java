@@ -7,6 +7,7 @@ package org.centrale.objet.WoE;
 import java.io.*;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Classe permettant de gérer les sauvegardes de joueurs
@@ -69,6 +70,7 @@ public class Sauvegarde {
 	    w = new World(largeur, longueur);
 	    w.list_creature = new ArrayList(list_creature);
 	    w.list_objet = new ArrayList(list_objet);
+	    w.setJ(this.j);
 	    
 	    
 	    // Destruction des objets

@@ -34,6 +34,11 @@ public class World {
     public List<Objet> list_objet;
     
     /**
+     * Pointeur du joueur qui joue pour le test des positions
+     */
+    public Joueur j;
+    
+    /**
      * Constructeur du monde pour créer les instances de classe
      * La taille par défaut est de 50x50
      */
@@ -54,6 +59,20 @@ public class World {
 	world_max_y = max_y;
 	list_creature = new ArrayList<>();
 	list_objet = new ArrayList<>();
+    }
+    
+    /**
+     * Constructeur du monde pour créer les instances de classe
+     * @param max_x Largeur du monde
+     * @param max_y Longueur du monde
+     * @param j Joueur qui joue
+     */
+    public World(int max_x, int max_y, Joueur j) {
+	world_max_x = max_x;
+	world_max_y = max_y;
+	list_creature = new ArrayList<>();
+	list_objet = new ArrayList<>();
+	j = this.j;
     }
     
  
@@ -154,9 +173,93 @@ public class World {
 	    if (c.getPos().equals(pos)) return false;
 	}
 	
+	// Si un joueur est en jeu, on le compare à la position
+	if (j != null) {
+	    if (j.getPerso().getPos().equals(pos)) return false;
+	}
 	
 	// Si aucune restriction n'a été enfrein, la position est validée
 	return true;
+    }
+    
+    /**
+     * Getteur de world_max_x
+     * @return
+     */
+    public int getWorld_max_x() {
+	return world_max_x;
+    }
+
+    /**
+     * Setter de world_max_x
+     * @param world_max_x
+     */
+    public void setWorld_max_x(int world_max_x) {
+	this.world_max_x = world_max_x;
+    }
+
+    /**
+     * Getter de world_max_y
+     * @return
+     */
+    public int getWorld_max_y() {
+	return world_max_y;
+    }
+
+    /**
+     * Setter de world_max_y
+     * @param world_max_y
+     */
+    public void setWorld_max_y(int world_max_y) {
+	this.world_max_y = world_max_y;
+    }
+
+    /**
+     * Getter de list_creature
+     * @return
+     */
+    public List<Creature> getList_creature() {
+	return list_creature;
+    }
+
+    /**
+     * Setter de list_creature
+     * @param list_creature
+     */
+    public void setList_creature(List<Creature> list_creature) {
+	this.list_creature = list_creature;
+    }
+
+    /**
+     * Getter de list_objet
+     * @return
+     */
+    public List<Objet> getList_objet() {
+	return list_objet;
+    }
+
+    /**
+     * Setter de list_objet
+     * @param list_objet
+     */
+    public void setList_objet(List<Objet> list_objet) {
+	this.list_objet = list_objet;
+    }
+
+    /**
+     * Getter du joueur
+     * @return
+     */
+    public Joueur getJ() {
+	return j;
+    }
+
+    /**
+     * Setter du joueur
+     * @param j
+     */
+    public void setJ(Joueur j) {
+	this.j = j;
     }
        
     /**
