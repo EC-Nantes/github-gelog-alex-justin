@@ -97,15 +97,18 @@ public class Joueur {
      */
     public boolean choisirPersonnage(String nomClass, String nomPerso){
         nomClass = nomClass.toLowerCase();
-        if (nomClass.equals("archer")){
-            this.perso = new Archer();
-            this.perso.setNom(nomPerso);
-        } else if (nomClass.equals("guerrier")){
+        switch (nomClass) {
+            case "archer":
+                this.perso = new Archer();
+                this.perso.setNom(nomPerso);
+                break;
+            case "guerrier":
                 this.perso = new Guerrier();
                 this.perso.setNom(nomPerso);
-        } else {
-            System.out.println("La classe choisie n'est pas disponible");
-            return false;
+                break;
+            default:
+                System.out.println("La classe choisie n'est pas disponible");
+                return false;
         }
         return true;
     }

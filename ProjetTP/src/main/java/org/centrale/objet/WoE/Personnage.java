@@ -46,7 +46,7 @@ public class Personnage extends Creature{
     public Personnage(){
         super();
         this.nom = "Perso";
-        this.distAttMax = 10;
+        this.distAttMax = 1;
     }
 
     /**
