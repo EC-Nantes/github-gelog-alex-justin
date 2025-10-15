@@ -164,7 +164,25 @@ public class Nourriture extends Objet implements Utilisable {
                 default:
                     System.out.println("Stat cible inconnue : " + statCible);
             }
-            dureeEffet --;
+        }
+    }
+    
+    /**
+     * Méthode pour décrémenter la durée d'un effet d'une créature cible
+     * @param cible la créature cible
+     */
+    public void decrementerDuree(Creature cible) {
+        dureeEffet--;
+        if (dureeEffet <= 0) {
+            System.out.println("L'effet de la nourriture " + getNom() + " s'est dissipé !");
+            // On retire le bonus appliqué au départ
+            switch (statCible) {
+                case "pv": cible.setPtVie(cible.getPtVie() - intensite); break;
+                case "degAtt": cible.setDegAtt(cible.getDegAtt() - intensite); break;
+                case "ptPar": cible.setPtPar(cible.getPtPar() - intensite); break;
+                case "pageAtt": cible.setPageAtt(cible.getPageAtt() - intensite); break;
+                case "pagePar": cible.setPagePar(cible.getPagePar() - intensite); break;
+            }
         }
     }
 }
