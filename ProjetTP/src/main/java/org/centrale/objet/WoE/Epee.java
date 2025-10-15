@@ -131,6 +131,16 @@ public class Epee extends Objet implements Utilisable {
         this.ptDurabilite = baatonn.ptDurabilite;
     }
     
-    
+    /**
+     * Méthode pour décrémenter la durabilité de l'épée du guerrier
+     * @param cible le guerrier qui possède l'arme
+     */
+    public void decrementerDurabilite(Guerrier cible) {
+        ptDurabilite--;
+        if (ptDurabilite <= 0) {
+            System.out.println(getNom() + " est cassée !");
+            cible.setArme(null); // si ton perso a un attribut arme
+        }
+    }
     
 }
