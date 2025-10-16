@@ -9,5 +9,5 @@ package org.centrale.objet.WoE;
  * @author jujus
  */
 public interface Utilisable {
-    public void utilisation(Creature c);
+	public void utilisation(Creature c);
 }

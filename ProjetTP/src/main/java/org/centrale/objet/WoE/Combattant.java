@@ -9,9 +9,9 @@ package org.centrale.objet.WoE;
  * @author jujus
  */
 public interface Combattant {
-    /**
-     * Méthode pour combattre une autre créature
-     * @param c la créature qui est attaquée
-     */
-    public void combattre(Creature c);
+	/**
+	 * Méthode pour combattre une autre créature
+	 * @param c la créature qui est attaquée
+	 */
+	public void combattre(Creature c);
 }

@@ -9,10 +9,10 @@ package org.centrale.objet.WoE;
  * @author jujus
  */
 public interface Deplacable {
-    /**
-     * méthode pour se déplacer sans se marcher sur les pieds
-     * @param w Le monde dans lequel on se déplace
-     */
-    public void deplace(World w);
+	/**
+	 * méthode pour se déplacer sans se marcher sur les pieds
+	 * @param w Le monde dans lequel on se déplace
+	 */
+	public void deplace(World w);
 
 }

@@ -9,46 +9,46 @@ package org.centrale.objet.WoE;
  * @author jujus
  */
 public class ElementDeJeu {
-    private Point2D pos; // la position de l'élement de jeu
-    
-    /**
-     * Constructeur d'un élément de Jeu
-     * @param posi la position de l'élement 
-     */
-    public ElementDeJeu(Point2D posi){
-        this.pos = posi;
-    }
-    
-    /**
-     * Constructeur par défaut de l'élement de jeu
-     */
-    public ElementDeJeu(){
-        this.pos = new Point2D();
-    }
-    
-    /**
-     * Constructeur de copie de l'élement de jeu
-     * @param edj élement de jeu copié
-     */
-    public ElementDeJeu(ElementDeJeu edj){
-        this.pos = edj.pos;
-    }
+	private Point2D pos; // la position de l'élement de jeu
+	
+	/**
+	 * Constructeur d'un élément de Jeu
+	 * @param posi la position de l'élement 
+	 */
+	public ElementDeJeu(Point2D posi){
+		this.pos = posi;
+	}
+	
+	/**
+	 * Constructeur par défaut de l'élement de jeu
+	 */
+	public ElementDeJeu(){
+		this.pos = new Point2D();
+	}
+	
+	/**
+	 * Constructeur de copie de l'élement de jeu
+	 * @param edj élement de jeu copié
+	 */
+	public ElementDeJeu(ElementDeJeu edj){
+		this.pos = edj.pos;
+	}
 
-    /**
-     * Getteur de la position
-     * @return la position
-     */
-    public Point2D getPos() {
-        return pos;
-    }
+	/**
+	 * Getteur de la position
+	 * @return la position
+	 */
+	public Point2D getPos() {
+		return pos;
+	}
 
-    /**
-     * Setteur de la position
-     * @param pos la nouvelle position
-     */
-    public void setPos(Point2D pos) {
-        this.pos = pos;
-    }
-    
-    
+	/**
+	 * Setteur de la position
+	 * @param pos la nouvelle position
+	 */
+	public void setPos(Point2D pos) {
+		this.pos = pos;
+	}
+	
+	
 }
