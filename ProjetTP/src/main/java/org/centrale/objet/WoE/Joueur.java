@@ -216,19 +216,67 @@ public class Joueur {
 			System.out.println("Objet introuvable dans l’inventaire.");
 	}
 
-	/**
-	 * Méthode pour afficher l'inventaire du joueur
-	 */
-	public void afficherInventaire() {
-		if (inventaire.isEmpty()) {
-			System.out.println("L’inventaire est vide.");
-		} else {
-			System.out.println("Inventaire de " + nomJoueur + " :");
-			for (Objet o : inventaire) {
-				System.out.println(" - " + o.getNom());
-			}
-		}
-	}
+    /**
+    * Méthode pour afficher et utiliser un objet de l’inventaire
+    */
+    public void afficherInventaire() {
+        if (inventaire.isEmpty()) {
+            System.out.println("L’inventaire est vide.");
+            return;
+        }
+
+        System.out.println("Inventaire de " + nomJoueur + " :");
+        for (int i = 0; i < inventaire.size(); i++) {
+            System.out.println((i + 1) + ". " + inventaire.get(i).getNom());
+        }
+    }
+    
+    /**
+     * Méthode pour afficher et utiliser un objet de l'inventaire
+     */
+    public void utiliserInventaire(){
+        afficherInventaire();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Entrez le numéro de l’objet à utiliser (0 pour annuler) : ");
+
+        int choix;
+        try {
+            choix = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println("Entrée invalide. Veuillez entrer un numéro.");
+            scanner.nextLine(); // nettoyage du buffer
+            return;
+        }
+
+        if (choix == 0) {
+            System.out.println("Aucun objet utilisé.");
+            return;
+        }
+
+        if (choix < 1 || choix > inventaire.size()) {
+            System.out.println("Numéro invalide. Veuillez réessayer.");
+            return;
+        }
+
+        Objet objetChoisi = inventaire.get(choix - 1);
+
+        System.out.println("Vous utilisez : " + objetChoisi.getNom());
+ 
+        // Si l’objet est utilisable, on l’applique au personnage
+        if (objetChoisi instanceof Utilisable) {
+            ((Utilisable) objetChoisi).utilisation(perso);
+ 
+            // Cas particulier : si c’est un effet temporaire ou persistant, on l’ajoute aux effets
+            if (objetChoisi instanceof Nourriture || objetChoisi instanceof Epee) {
+                perso.getEffets().add((Utilisable) objetChoisi);
+            }
+ 
+            // Retirer l’objet une fois utilisé (dans tous les cas)
+            inventaire.remove(objetChoisi);
+        } else {
+            System.out.println("Cet objet ne peut pas être utilisé.");
+        }
+    }
 
 	/**
 	 * getteur de l'inventaire du joueur
