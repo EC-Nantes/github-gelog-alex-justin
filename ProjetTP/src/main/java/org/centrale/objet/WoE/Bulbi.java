@@ -70,5 +70,22 @@ public class Bulbi extends Monstre {
 		this.getPos().affiche();
 		System.out.println("");
 	}
+
+    /**
+     * Getteur de PP de Bulbi
+     * @return les PP
+     */
+    public int getPP() {
+        return PP;
+    }
+
+    /**
+     * Setteur des PP de Bulbi
+     * @param PP le nouveau nombre de PP
+     */
+    public void setPP(int PP) {
+        this.PP = PP;
+    }
 	
+        
 }

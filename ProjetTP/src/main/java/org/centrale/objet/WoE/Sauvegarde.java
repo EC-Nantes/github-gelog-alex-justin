@@ -379,7 +379,7 @@ public class Sauvegarde {
 				break;
 			case "Guerrier":
 				Epee e = ((Guerrier)c).getArme();
-				line += e.getgetPtAttaque() + " " + e.getPtDurabilite() + " ";
+				line += e.getPtAttaque() + " " + e.getPtDurabilite() + " ";
 				line = ((Personnage)c).getNom() + " " + line;
 				break;
 			case "Bulbi":
