@@ -18,7 +18,7 @@ public class TestWoE {
 	 * le vrai main
 	 */
 	public void main(){
-		this.TestInventaire();
+		this.TestInventaireEtSauvegarde();
 		
 		//System.out.println("\nCréation du monde");
 		//World Centrale = new World();
@@ -283,13 +283,20 @@ public class TestWoE {
 		scanner.close();
 	}
 	
-	public void TestInventaire() {
+	public void TestInventaireEtSauvegarde() {
+        // --- Création d'un monde ---
+        World w = new World(50,50);
+        w.creerMondeAlea();
+        
 		// --- Création du joueur et de son personnage ---
 		Joueur joueur = new Joueur();
 		joueur.setNomJoueur("Justin");
 		Personnage a = new Archer(10, "Robin", 100, 15, 10, 80, 60, 5, new Point2D(0, 0));
 		joueur.setPerso(a);
 		joueur.perso.affiche();
+        
+        // --- Création de la sauvegarde ---
+        Sauvegarde save = new Sauvegarde();
 
 		// --- Création d'objets utilisables ---
 		Nourriture pomme = new Nourriture("Pomme dorée", 5, 4, "degAtt");
@@ -315,6 +322,7 @@ public class TestWoE {
 		// --- Inventaire après utilisation ---
 		System.out.println("\n=== Inventaire après utilisation ===");
 		joueur.afficherInventaire();
+        save.saveWorld("TourIni.txt", w, joueur);
 
 		// --- Simulation de quelques tours pour voir les effets temporaires ---
 		for (int tour = 1; tour <= 4; tour++) {
@@ -331,5 +339,6 @@ public class TestWoE {
 		System.out.println("Parade : " + a.getPtPar());
 		System.out.println("Effets restants : " + a.getEffets().size());
 		joueur.getPerso().afficherEffets();
+        save.saveWorld("TourFin.txt", w, joueur);
 	}
 }
