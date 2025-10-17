@@ -263,17 +263,16 @@ public class World {
 	}
 	   
 	/**
-	 * Méthode permettant de trouver une des créature du monde à partir du nom de sa classe
-	 * @param nomClasse String du nom de la classe
+	 * Méthode permettant de trouver une des créature du monde à partir de sa position
+	 * @param X sa position en X
+     * @param Y sa position en Y
 	 * @return une créature correspondante
 	 */
-	public Creature trouverCreatureParClasse(String nomClasse) {
-		nomClasse = nomClasse.toLowerCase(); // pour ignorer la casse
-
+	public Creature trouverCreatureParPosition(int X, int Y) {
+		
 		for (Creature c : list_creature) {
 			if (c.getPtVie() > 0) { // ignorer les morts
-				String classeC = c.getClass().getSimpleName().toLowerCase();
-				if (classeC.equals(nomClasse)) {
+				if (X == c.getPos().getX() && Y == c.getPos().getY()) {
 					return c; // renvoie la première créature correspondante
 				}
 			}

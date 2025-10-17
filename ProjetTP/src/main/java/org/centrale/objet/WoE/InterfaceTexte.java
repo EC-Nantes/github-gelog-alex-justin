@@ -15,7 +15,7 @@ public class InterfaceTexte {
     /**
      * Affiche le monde sous forme de grille textuelle.
      * Chaque case du monde est représentée par une lettre :
-     * G = Guerrier, A = Archer, M = Monstre, J = Joueur, N = Nuage toxique, . = vide
+     * G = Guerrier, A = Archer, M = Monstre, J = Joueur, T = Nuage toxique, . = vide etc...
      * @param w le monde
      * @param joueur le joueur qui va jouer
      */
@@ -128,15 +128,15 @@ public class InterfaceTexte {
     /**
      * Affiche le menu de tour de jeu et retourne le choix du joueur.
      * @param joueur Le joueur 
-     * @return le menu
+     * @return le choix du joueur
      */
-    public String afficherMenuTour(Joueur joueur) {
+    public int afficherMenuTour(Joueur joueur) {
         System.out.println("\n=== Tour de " + joueur.getNomJoueur() + " ===");
-        System.out.println("1. Se déplacer");
-        System.out.println("2. Combattre");
-        System.out.println("3. Sauvegarder et quitter");
+        System.out.println("1. Jouer un tour");
+        System.out.println("2. Inventaire");
+        System.out.println("3. Sauvegarder");
         System.out.print("Votre choix : ");
-        return scanner.nextLine();
+        return scanner.nextInt();
     }
 
     /**

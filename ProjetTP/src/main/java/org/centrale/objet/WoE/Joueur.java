@@ -174,14 +174,18 @@ public class Joueur {
 				break;
 			case 2:
 				System.out.println(nomJoueur + " choisit de combattre");
-				System.out.print("Choix de la créature à affronter :");
-				String nomClasse = scanner.next();
+                System.out.println("Vous êtes en : " + perso.getPos());
+				System.out.print("Entrez la case de la créature que vous souhaitez affronter :");
+                System.out.println("axe X → : ");
+				int ciblePosX = scanner.nextInt();
+                System.out.println("axe Y ↓ : ");
+				int ciblePosY = scanner.nextInt();
 				
-				// On cherche la créature dans le monde par son nom
-				Creature cible = monde.trouverCreatureParClasse(nomClasse);
+				// On cherche la créature dans le monde par sa position
+				Creature cible = monde.trouverCreatureParPosition(ciblePosX, ciblePosY);
 
 				if (cible == null) {
-					System.out.println("Aucune créature de type " + nomClasse + " n'a été trouvée !");
+					System.out.println("Aucune créature trouvée à cette position !");
 				} else {
 					String classePerso = perso.getClass().getSimpleName();
 					if (classePerso.equals("Archer")){
@@ -189,7 +193,7 @@ public class Joueur {
 					} else if (classePerso.equals("Guerrier")){
 						((Guerrier)perso).combattre(cible);
 					} else {
-						System.out.print("Erreur de recherche de classe");
+						System.out.print("Erreur de recherche de créature");
 					}
 				}
 				break;

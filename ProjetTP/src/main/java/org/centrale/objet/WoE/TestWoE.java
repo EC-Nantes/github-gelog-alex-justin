@@ -48,7 +48,7 @@ public class TestWoE {
 		//testConteneur(100000);
 		//testConteneur(1000000);
 		
-		
+		LancerUnePartie();
 	}
 	
 	
@@ -355,4 +355,79 @@ public class TestWoE {
 		j.afficherInventaire();
 		j.getPerso().affiche();
 	}
+    
+    public void LancerUnePartie(){
+        
+        
+        Scanner scanner = new Scanner(System.in);
+        
+        // --- Création d'un monde ---
+        World w = new World(50,50);
+        w.creerMondeAlea(150);
+
+        // --- Création du joueur ---
+        Joueur joueur = new Joueur();
+        
+        System.out.println("Que voulez vous faire :");
+        System.out.println("1. Créer une nouvelle partie");
+        System.out.println("2. Charger une partie");
+        int savetate = scanner.nextInt();
+        
+        // --- Création de la sauvegarde ---
+        Sauvegarde save = new Sauvegarde();
+        
+        String nomJoueur = "";
+        
+        switch (savetate){
+            case 1 :
+                
+                // --- Création du joueur et du personnage ---
+                System.out.print("Entrez votre pseudo : ");
+                nomJoueur = scanner.next();
+                joueur.setNomJoueur(nomJoueur);
+
+                System.out.print("Entrez le nom de votre personnage :");
+                String nomPerso = scanner.next();
+                boolean ChoixPerso = false;
+                while (!ChoixPerso){
+                    System.out.print("Entrez votre classe (Archer ou Guerrier) :");
+                    String nomClasse = scanner.next();
+                    ChoixPerso = joueur.choisirPersonnage(nomClasse, nomPerso);
+                }
+                break;
+            case 2 :
+                System.out.println("Entrez votre pseudo de la partie à charger :");
+                nomJoueur = scanner.next();
+                save.loadWorld(nomJoueur+".txt", w, joueur);
+                break;
+        }
+        
+        joueur.perso.affiche();
+        
+        // --- Création de l'interface ---
+        InterfaceTexte vision = new InterfaceTexte();
+        vision.afficherMonde(w, joueur);
+        
+        // --- Lancement du jeu ---
+        boolean continuer = true;
+        while (continuer){
+            int choix = vision.afficherMenuTour(joueur);
+			switch (choix){
+                case 1 :
+                    joueur.jouerTour(w);
+                    break;
+                case 2 :
+                    joueur.utiliserInventaire();
+                    break;
+                case 3 :
+                    save.saveWorld(nomJoueur + ".txt", w, joueur);
+                    break;
+            }
+            vision.afficherMonde(w, joueur);
+			System.out.print("Voulez-vous continuer ? (O/N) : ");
+			String rep = scanner.nextLine().trim().toLowerCase();
+			if (rep.equals("n")) continuer = false;
+        }
+
+    }
 }
