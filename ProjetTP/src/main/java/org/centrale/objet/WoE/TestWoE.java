@@ -443,6 +443,7 @@ public class TestWoE {
 			switch (choix){
                 case 1 :
                     joueur.jouerTour(w);
+                    w.tourDeJeu();
                     break;
                 case 2 :
                     joueur.utiliserInventaire();
