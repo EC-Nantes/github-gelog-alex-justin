@@ -357,13 +357,41 @@ public class TestWoE {
 	}
     
     public void LancerUnePartie(){
-        
+        ArrayList<Objet> objet_monde = new ArrayList<>();
+
+		objet_monde.add(new Epee("simple epee", 20, new Point2D(2, 3)));
+		objet_monde.add(new Epee("simple epee", 30, new Point2D(1, 1)));
+		objet_monde.add(new Epee("simple epee", 20, new Point2D(25, 7)));
+		objet_monde.add(new Epee("Super epee", 20, new Point2D(40, 40)));
+
+		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(5, 6)))
+		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(13, 6)))
+		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(35, 44)))
+		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(7, 20)))
+		objet_monde.add(new PotionSoin("Soin", 30, new Point2D(6, 6)))
+		objet_monde.add(new PotionSoin("Soin", 30, new Point2D(7, 6)))
+
+		objet_monde.add(new NuageToxique(new Point2D(46, 9), 2, -30));
+		objet_monde.add(new NuageToxique(new Point2D(3, 29), 2, 5));
+		objet_monde.add(new NuageToxique(new Point2D(45, 19), 2, -2));
+		objet_monde.add(new NuageToxique(new Point2D(2, 29), 2, 3));
+
+		objet_monde.add(new Nourriture("Pomme dorée", 5, 4, "degAtt", new Point2D(5, 6)));
+		objet_monde.add(new Nourriture("Viande épicée", 3, 2, "ptPar", new Point2D(46, 6)));
+		objet_monde.add(new Nourriture("Potion de Jouvence", 1, 10000, "pv", new Point2D(5, 36)));
+		objet_monde.add(new Nourriture("Pomme dorée", 5, 4, "degAtt", new Point2D(6, 6)));
+		objet_monde.add(new Nourriture("Viande épicée", 3, 2, "ptPar", new Point2D(35, 26)));
+		objet_monde.add(new Nourriture("Potion de Jouvence", 1, 10000, "pv", new Point2D(9, 1)));
+		objet_monde.add(new Nourriture("Pomme dorée", 5, 4, "degAtt", new Point2D(9, 36)));
+		objet_monde.add(new Nourriture("Viande épicée", 3, 2, "ptPar", new Point2D(23, 14)));
+		objet_monde.add(new Nourriture("Potion de Jouvence", 1, 10000, "pv", new Point2D(35, 36)));
         
         Scanner scanner = new Scanner(System.in);
         
         // --- Création d'un monde ---
         World w = new World(50,50);
         w.creerMondeAlea(150);
+        w.setList_objet(new ArrayList(objet_monde));
 
         // --- Création du joueur ---
         Joueur joueur = new Joueur();
