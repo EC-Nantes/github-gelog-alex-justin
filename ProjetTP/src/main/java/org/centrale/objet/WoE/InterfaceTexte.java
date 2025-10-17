@@ -127,6 +127,8 @@ public class InterfaceTexte {
     
     /**
      * Affiche le menu de tour de jeu et retourne le choix du joueur.
+     * @param joueur Le joueur 
+     * @return le menu
      */
     public String afficherMenuTour(Joueur joueur) {
         System.out.println("\n=== Tour de " + joueur.getNomJoueur() + " ===");
