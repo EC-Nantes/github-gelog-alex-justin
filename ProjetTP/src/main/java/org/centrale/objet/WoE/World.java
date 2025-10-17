@@ -269,12 +269,26 @@ public class World {
 	 * @return une créature correspondante
 	 */
 	public Creature trouverCreatureParPosition(int X, int Y) {
-		
 		for (Creature c : list_creature) {
 			if (c.getPtVie() > 0) { // ignorer les morts
 				if (X == c.getPos().getX() && Y == c.getPos().getY()) {
 					return c; // renvoie la première créature correspondante
 				}
+			}
+		}
+		return null; // aucune trouvée
+	}
+    
+    /**
+	 * Méthode permettant de trouver un des objets du monde à partir de sa position
+	 * @param X sa position en X
+     * @param Y sa position en Y
+	 * @return l'objet correspondante
+	 */
+	public Objet trouverObjetParPosition(int X, int Y) {
+		for (Objet o : list_objet) {
+			if (X == o.getPos().getX() && Y == o.getPos().getY()) { 
+				return o;
 			}
 		}
 		return null; // aucune trouvée

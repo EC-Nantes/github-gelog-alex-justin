@@ -166,6 +166,12 @@ public class Joueur {
 				
 				//Testons si la position est valide
 				if (monde.validPos(move)){
+                    Objet objetpeutetre = monde.trouverObjetParPosition(move.getX(), move.getY());
+                    if (objetpeutetre == null){
+                    }else{
+                        System.out.println("Le Joueur utilise l'objet !");
+                        ((Utilisable)objetpeutetre).utilisation(perso);
+                    }
 					deplace(dx, dy);
 				} else {
 					System.out.println("Position Invalide");
@@ -174,8 +180,9 @@ public class Joueur {
 				break;
 			case 2:
 				System.out.println(nomJoueur + " choisit de combattre");
-                System.out.println("Vous êtes en : " + perso.getPos());
-				System.out.print("Entrez la case de la créature que vous souhaitez affronter :");
+                System.out.println("Vous êtes en : " );
+                perso.getPos().affiche();
+				System.out.println("Entrez la case de la créature que vous souhaitez affronter :");
                 System.out.println("axe X → : ");
 				int ciblePosX = scanner.nextInt();
                 System.out.println("axe Y ↓ : ");
@@ -187,6 +194,8 @@ public class Joueur {
 				if (cible == null) {
 					System.out.println("Aucune créature trouvée à cette position !");
 				} else {
+                    System.out.println("À l'attaque ! on attaque :");
+                    cible.affiche();
 					String classePerso = perso.getClass().getSimpleName();
 					if (classePerso.equals("Archer")){
 						((Archer)perso).combattre(cible);
@@ -195,6 +204,8 @@ public class Joueur {
 					} else {
 						System.out.print("Erreur de recherche de créature");
 					}
+                    System.out.println("la cible est maintenant à :");
+                    cible.affiche();
 				}
 				break;
 		}
