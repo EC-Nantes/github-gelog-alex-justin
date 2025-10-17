@@ -18,7 +18,9 @@ public class TestWoE {
 	 * le vrai main
 	 */
 	public void main(){
-		this.TestInventaireEtSauvegarde();
+		//this.TestInventaireEtSauvegarde();
+
+		//this.testLectureSauvegarde();
 		
 		//System.out.println("\nCréation du monde");
 		//World Centrale = new World();
@@ -340,5 +342,17 @@ public class TestWoE {
 		System.out.println("Effets restants : " + a.getEffets().size());
 		joueur.getPerso().afficherEffets();
         save.saveWorld("TourFin.txt", w, joueur);
+	}
+
+	public void testLectureSauvegarde() {
+		Sauvegarde s = new Sauvegarde();
+		World w = new World();
+		Joueur j = new Joueur();
+
+		System.out.println(s.loadWorld("TourIni.txt", w, j));
+
+		w.afficheWorld();
+		j.afficherInventaire();
+		j.getPerso().affiche();
 	}
 }

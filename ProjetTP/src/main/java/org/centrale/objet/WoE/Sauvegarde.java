@@ -56,21 +56,20 @@ public class Sauvegarde {
 			// Constitution du jeu
 			line = file.readLine();
 			while (line != null) {
-			ajoutElementDeJeu(line);
-			line = file.readLine();
+				ajoutElementDeJeu(line);
+				line = file.readLine();
 			
 			}
 			file.close();
 			
 			if (largeur == -1 || longueur == -1) {
-			return false;
+				return false;
 			}
 					
 			// Copie des éléments du monde
 			j.setInventaire(new ArrayList(list_objet_inventaire));
 			j.setPerso(perso_joueur);
-			j.setNomJoueur(nom_joueur);
-			
+			j.setNomJoueur(nom_joueur);			
 			
 			w.setWorld_max_x(largeur);
 			w.setWorld_max_y(longueur);
@@ -169,11 +168,12 @@ public class Sauvegarde {
 			
 			switch (element) {
 				case "Joueur":
-					temp = tokenizer.nextToken();
 					name = tokenizer.nextToken();
+					temp = tokenizer.nextToken();
 					nom_joueur = name;
 					
-					if (temp.equals("Guerrier") && tokenizer.countTokens() == 10) {
+					if (temp.equals("Guerrier") && tokenizer.countTokens() == 11) {
+						name = tokenizer.nextToken();
 						for (int  i = 0; i < 10; i++) {
 							args[i] = Integer.parseInt(tokenizer.nextToken());
 						}
@@ -181,7 +181,8 @@ public class Sauvegarde {
 						pos = new Point2D(args[8], args[9]);
 						Guerrier g = new Guerrier(name, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], pos);
 						perso_joueur = (Personnage)g;
-					} else if (temp.equals("Archer") && tokenizer.countTokens() == 9) {
+					} else if (temp.equals("Archer") && tokenizer.countTokens() == 10) {
+						name = tokenizer.nextToken();
 						for (int  i = 0; i < 9; i++) {
 							args[i] = Integer.parseInt(tokenizer.nextToken());
 						}
@@ -321,11 +322,11 @@ public class Sauvegarde {
 					if (tokenizer.countTokens() != 6 && !inventaire) break;
 					if (tokenizer.countTokens() != 4 && inventaire) break;
 					name = tokenizer.nextToken();
-					temp = tokenizer.nextToken();
 					
 					for (int  i = 0; i < 2; i++) {
 						args[i] = Integer.parseInt(tokenizer.nextToken());
 					}
+					temp = tokenizer.nextToken();
 
 					Nourriture n;
 					if (!inventaire) {
@@ -372,23 +373,27 @@ public class Sauvegarde {
 		line += c.getPageAtt()+ " ";
 		line += c.getPagePar() + " ";
 
+
 		boolean write_line = true;
 		
 		
 		switch (classe) {
 			case "Archer":
+				line += ((Personnage)c).getDistAttMax() + " ";
 				line += ((Archer)c).getNbFleches() + " ";
 				line = ((Personnage)c).getNom() + " " + line;
 				break;
 			case "Guerrier":
+				line += ((Personnage)c).getDistAttMax() + " ";
 				Epee e = ((Guerrier)c).getArme();
 				line += e.getPtAttaque() + " " + e.getPtDurabilite() + " ";
 				line = ((Personnage)c).getNom() + " " + line;
 				break;
 			case "Bulbi":
-				line += ((Bulbi)c).getPP();
+				line += ((Bulbi)c).getPP() + " ";
 				break;
 			case "Paysan":
+				line += ((Personnage)c).getDistAttMax() + " ";
 				line = ((Personnage)c).getNom() + " " + line;
 				break;
 			default:
