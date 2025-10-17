@@ -363,7 +363,7 @@ public class Sauvegarde {
 		}
 	}
 	
-	private void writeCreature(BufferedWriter f, Creature c) {
+	private void writeCreature(BufferedWriter f, Creature c) throws IOException {
 		String classe = c.getClass().getSimpleName();
 		String line = c.getPtVie() + " ";
 		line += c.getDegAtt() + " ";
