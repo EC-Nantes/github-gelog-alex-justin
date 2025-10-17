@@ -364,12 +364,12 @@ public class TestWoE {
 		objet_monde.add(new Epee("simple epee", 20, new Point2D(25, 7)));
 		objet_monde.add(new Epee("Super epee", 20, new Point2D(40, 40)));
 
-		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(5, 6)))
-		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(13, 6)))
-		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(35, 44)))
-		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(7, 20)))
-		objet_monde.add(new PotionSoin("Soin", 30, new Point2D(6, 6)))
-		objet_monde.add(new PotionSoin("Soin", 30, new Point2D(7, 6)))
+		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(5, 6)));
+		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(13, 6)));
+		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(35, 44)));
+		objet_monde.add(new PotionSoin("Poison", -5, new Point2D(7, 20)));
+		objet_monde.add(new PotionSoin("Soin", 30, new Point2D(6, 6)));
+		objet_monde.add(new PotionSoin("Soin", 30, new Point2D(7, 6)));
 
 		objet_monde.add(new NuageToxique(new Point2D(46, 9), 2, -30));
 		objet_monde.add(new NuageToxique(new Point2D(3, 29), 2, 5));
