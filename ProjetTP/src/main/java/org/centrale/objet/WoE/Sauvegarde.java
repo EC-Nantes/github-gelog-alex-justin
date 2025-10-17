@@ -119,7 +119,7 @@ public class Sauvegarde {
 			file.newLine();
 			
 			String line = "Joueur ";
-			line += j.getNomJoueur();
+			line += j.getNomJoueur().replace(' ', '_');
 			line += " ";
 			file.write(line);
 			writeCreature(file, j.getPerso());
@@ -168,12 +168,12 @@ public class Sauvegarde {
 			
 			switch (element) {
 				case "Joueur":
-					name = tokenizer.nextToken();
-					temp = tokenizer.nextToken();
+					name = tokenizer.nextToken().replace('_', ' ');
+					temp = tokenizer.nextToken().replace('_', ' ');
 					nom_joueur = name;
 					
 					if (temp.equals("Guerrier") && tokenizer.countTokens() == 11) {
-						name = tokenizer.nextToken();
+						name = tokenizer.nextToken().replace('_', ' ');
 						for (int  i = 0; i < 10; i++) {
 							args[i] = Integer.parseInt(tokenizer.nextToken());
 						}
@@ -182,7 +182,7 @@ public class Sauvegarde {
 						Guerrier g = new Guerrier(name, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], pos);
 						perso_joueur = (Personnage)g;
 					} else if (temp.equals("Archer") && tokenizer.countTokens() == 10) {
-						name = tokenizer.nextToken();
+						name = tokenizer.nextToken().replace('_', ' ');
 						for (int  i = 0; i < 9; i++) {
 							args[i] = Integer.parseInt(tokenizer.nextToken());
 						}
@@ -205,7 +205,7 @@ public class Sauvegarde {
 				
 				case "Guerrier":
 					if (tokenizer.countTokens() != 11) break;
-					name = tokenizer.nextToken();
+					name = tokenizer.nextToken().replace('_', ' ');
 					for (int  i = 0; i < 10; i++) {
 						args[i] = Integer.parseInt(tokenizer.nextToken());
 					}
@@ -217,7 +217,7 @@ public class Sauvegarde {
 				
 				case "Archer":
 					if (tokenizer.countTokens() != 10) break;
-					name = tokenizer.nextToken();
+					name = tokenizer.nextToken().replace('_', ' ');
 					for (int  i = 0; i < 9; i++) {
 						args[i] = Integer.parseInt(tokenizer.nextToken());
 					}
@@ -229,7 +229,7 @@ public class Sauvegarde {
 		
 				case "Paysan":
 					if (tokenizer.countTokens() != 9) break;
-					name = tokenizer.nextToken();
+					name = tokenizer.nextToken().replace('_', ' ');
 					for (int  i = 0; i < 8; i++) {
 						args[i] = Integer.parseInt(tokenizer.nextToken());
 					}
@@ -275,7 +275,7 @@ public class Sauvegarde {
 				case "PotionSoin":
 					if (tokenizer.countTokens() != 4 && !inventaire) break;
 					if (tokenizer.countTokens() != 2 && inventaire) break;
-					name = tokenizer.nextToken();
+					name = tokenizer.nextToken().replace('_', ' ');
 					args[0] = Integer.parseInt(tokenizer.nextToken());
 					
 					PotionSoin po;
@@ -298,7 +298,7 @@ public class Sauvegarde {
 				case "Epee":
 					if (tokenizer.countTokens() != 5 && !inventaire) break;
 					if (tokenizer.countTokens() != 3 && inventaire) break;
-					name = tokenizer.nextToken();
+					name = tokenizer.nextToken().replace('_', ' ');
 					for (int  i = 0; i < 2; i++) {
 						args[i] = Integer.parseInt(tokenizer.nextToken());
 					}
@@ -321,12 +321,12 @@ public class Sauvegarde {
 				case "Nourriture":
 					if (tokenizer.countTokens() != 6 && !inventaire) break;
 					if (tokenizer.countTokens() != 4 && inventaire) break;
-					name = tokenizer.nextToken();
+					name = tokenizer.nextToken().replace('_', ' ');
 					
 					for (int  i = 0; i < 2; i++) {
 						args[i] = Integer.parseInt(tokenizer.nextToken());
 					}
-					temp = tokenizer.nextToken();
+					temp = tokenizer.nextToken().replace('_', ' ');
 
 					Nourriture n;
 					if (!inventaire) {
@@ -381,20 +381,24 @@ public class Sauvegarde {
 			case "Archer":
 				line += ((Personnage)c).getDistAttMax() + " ";
 				line += ((Archer)c).getNbFleches() + " ";
-				line = ((Personnage)c).getNom() + " " + line;
+				line = ((Personnage)c).getNom().replace(' ', '_') + " " + line;
 				break;
 			case "Guerrier":
 				line += ((Personnage)c).getDistAttMax() + " ";
 				Epee e = ((Guerrier)c).getArme();
 				line += e.getPtAttaque() + " " + e.getPtDurabilite() + " ";
-				line = ((Personnage)c).getNom() + " " + line;
+				line = ((Personnage)c).getNom().replace(' ', '_') + " " + line;
 				break;
 			case "Bulbi":
 				line += ((Bulbi)c).getPP() + " ";
 				break;
 			case "Paysan":
 				line += ((Personnage)c).getDistAttMax() + " ";
-				line = ((Personnage)c).getNom() + " " + line;
+				line = ((Personnage)c).getNom().replace(' ', '_') + " " + line;
+				break;
+			case "Loup":
+			case "Lapin":
+				// Nothing to do
 				break;
 			default:
 				write_line = false;
@@ -418,13 +422,13 @@ public class Sauvegarde {
 
 		switch (classe) {
 			case "Epee":
-				line +=  o.getNom() + " ";
+				line +=  o.getNom().replace(' ', '_') + " ";
 				line += ((Epee)o).getPtAttaque() + " ";
 				line += ((Epee)o).getPtDurabilite() + " ";
 				line += pos.getX() + " " + pos.getY() + "\n";
 				break;
 			case "PotionSoin":
-				line +=  o.getNom() + " ";
+				line +=  o.getNom().replace(' ', '_') + " ";
 				line += ((PotionSoin)o).getPtRegen() + " ";
 				line += pos.getX() + " " + pos.getY() + "\n";
 				break;
@@ -434,7 +438,7 @@ public class Sauvegarde {
 				line += ((NuageToxique)o).getDegats() + "\n";
 				break;
 			case "Nourriture":
-				line += ((Nourriture)o).getNom() + " ";
+				line += ((Nourriture)o).getNom().replace(' ', '_') + " ";
 				line += ((Nourriture)o).getIntensite() + " ";
 				line += ((Nourriture)o).getDureeEffet() + " ";
 				line += ((Nourriture)o).getStatCible() + " ";
@@ -456,16 +460,16 @@ public class Sauvegarde {
 
 		switch (classe) {
 			case "Epee":
-				line +=  o.getNom() + " ";
+				line +=  o.getNom().replace(' ', '_') + " ";
 				line += ((Epee)o).getPtAttaque() + " ";
 				line += ((Epee)o).getPtDurabilite() + "\n";
 				break;
 			case "PotionSoin":
-				line +=  o.getNom() + " ";
+				line +=  o.getNom().replace(' ', '_') + " ";
 				line += ((PotionSoin)o).getPtRegen() + "\n";
 				break;
 			case "Nourriture":
-				line += ((Nourriture)o).getNom() + " ";
+				line += ((Nourriture)o).getNom().replace(' ', '_') + " ";
 				line += ((Nourriture)o).getIntensite() + " ";
 				line += ((Nourriture)o).getDureeEffet() + " ";
 				line += ((Nourriture)o).getStatCible() + "\n";
