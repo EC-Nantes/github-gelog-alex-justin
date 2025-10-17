@@ -405,7 +405,7 @@ public class Sauvegarde {
 	}
 	
 	private void writeObjet(BufferedWriter f, Objet o) throws IOException {
-		String classe = c.getClass().getSimpleName();
+		String classe = o.getClass().getSimpleName();
 		String line = classe + " ";
 
 		Point2D pos = o.getPos();
@@ -440,11 +440,11 @@ public class Sauvegarde {
 				break;
 		}
 
-		if (write_line) file.write(line);
+		if (write_line) f.write(line);
 	}
 	
-	private void writeInventaire(BufferedWriter f, Objet o) {
-		String classe = c.getClass().getSimpleName();
+	private void writeInventaire(BufferedWriter f, Objet o) throws IOException {
+		String classe = o.getClass().getSimpleName();
 		String line = "Inventaire " + classe + " ";
 
 		boolean write_line = true;
@@ -470,6 +470,6 @@ public class Sauvegarde {
 				break;
 		}
 
-		if (write_line) file.write(line);
+		if (write_line) f.write(line);
 	}
 }
