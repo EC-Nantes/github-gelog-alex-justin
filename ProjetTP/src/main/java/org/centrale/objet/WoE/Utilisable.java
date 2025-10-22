@@ -5,9 +5,13 @@
 package org.centrale.objet.WoE;
 
 /**
- *
+ * Interface des objets utilisables
  * @author jujus
  */
 public interface Utilisable {
+    /**
+     * Utiliser l'objet sur une créature
+     * @param c la cible
+     */
 	public void utilisation(Creature c);
 }

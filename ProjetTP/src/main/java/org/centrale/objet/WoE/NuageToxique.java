@@ -15,9 +15,9 @@ public class NuageToxique extends Objet implements Deplacable, Combattant {
 	
 	/**
 	 * Constructeur d'un nuage toxique
-	 * @param pos
-	 * @param rayon
-	 * @param degats
+	 * @param pos la position du nuage
+	 * @param rayon son rayon d'action
+	 * @param degats les dégâts qu'il inflige
 	 */
 	public NuageToxique(Point2D pos, int rayon, int degats) {
 		super();
@@ -39,7 +39,7 @@ public class NuageToxique extends Objet implements Deplacable, Combattant {
 	
 	/**
 	 * Constructeur de copie d'un nuage toxique
-	 * @param nuto
+	 * @param nuto le nuage copié
 	 */
 	public NuageToxique(NuageToxique nuto){
 		super(nuto);

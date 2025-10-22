@@ -89,7 +89,7 @@ public class World {
 	/**
 	 * Crée un nombre n de créatures et les place les entités dans le monde de façon aléatoire
 	 * Cette fonction ne doit être appelé qu'une seule fois pour l'initialisation
-	 * @param n 
+	 * @param n le nombre de créatures dans le monde
 	 */
 	public void creerMondeAlea(int n) {
 		/* *************************************************** */
@@ -157,8 +157,8 @@ public class World {
 	
 	/**
 	 * Valide la position d'un mob sur le jeu
-	 * @param pos
-	 * @return 
+	 * @param pos la position 
+	 * @return True si aucun obstacle est sur la position
 	 */
 	public boolean validPos(Point2D pos) {
 		// Pour ne pas allez hors de la zone de jeu
@@ -184,7 +184,7 @@ public class World {
 	
 	/**
 	 * Getteur de world_max_x
-	 * @return
+	 * @return la taille max du monde en X
 	 */
 	public int getWorld_max_x() {
 		return world_max_x;
@@ -192,7 +192,7 @@ public class World {
 
 	/**
 	 * Setter de world_max_x
-	 * @param world_max_x
+	 * @param world_max_x la taille max du monde en X
 	 */
 	public void setWorld_max_x(int world_max_x) {
 		this.world_max_x = world_max_x;
@@ -200,7 +200,7 @@ public class World {
 
 	/**
 	 * Getter de world_max_y
-	 * @return
+	 * @return la taille max du monde en Y
 	 */
 	public int getWorld_max_y() {
 		return world_max_y;
@@ -208,7 +208,7 @@ public class World {
 
 	/**
 	 * Setter de world_max_y
-	 * @param world_max_y
+	 * @param world_max_y la taille max du monde en Y
 	 */
 	public void setWorld_max_y(int world_max_y) {
 		this.world_max_y = world_max_y;
@@ -216,7 +216,7 @@ public class World {
 
 	/**
 	 * Getter de list_creature
-	 * @return
+	 * @return la liste des créatures du monde
 	 */
 	public List<Creature> getList_creature() {
 		return list_creature;
@@ -224,7 +224,7 @@ public class World {
 
 	/**
 	 * Setter de list_creature
-	 * @param list_creature
+	 * @param list_creature la liste des créatures du monde
 	 */
 	public void setList_creature(List<Creature> list_creature) {
 		this.list_creature = list_creature;
@@ -232,7 +232,7 @@ public class World {
 
 	/**
 	 * Getter de list_objet
-	 * @return
+	 * @return la liste des objets dans le monde
 	 */
 	public List<Objet> getList_objet() {
 		return list_objet;
@@ -240,7 +240,7 @@ public class World {
 
 	/**
 	 * Setter de list_objet
-	 * @param list_objet
+	 * @param list_objet la liste des objets dans le monde
 	 */
 	public void setList_objet(List<Objet> list_objet) {
 		this.list_objet = list_objet;
@@ -248,7 +248,7 @@ public class World {
 
 	/**
 	 * Getter du joueur
-	 * @return
+	 * @return le joueur
 	 */
 	public Joueur getJ() {
 		return j;
@@ -256,7 +256,7 @@ public class World {
 
 	/**
 	 * Setter du joueur
-	 * @param j
+	 * @param j le joueur
 	 */
 	public void setJ(Joueur j) {
 		this.j = j;
